@@ -1,0 +1,1421 @@
+/* Global Variables */
+:root {
+  /* ── Triadic palette plus black and white ── */
+  --purple:         #D9BAFC;
+  --purple-light:   #c08efa38;
+  --purple-lesser:  #c08efa59;
+  --purple-dark:    #C08EFA;
+  --purple-deeper:  #7B3FBE;
+  --purple-blue:    #8134df;
+  --purple-gray:    #5d3c85;
+  --purple-black:   #73519aa6;
+  --purple-inkk:    #3D1A70;
+  --purple-extreme: #2A1050;  
+  --peach:          #FCD9BA;
+  --peach-light:    #fac08e14;
+  --mint:           #BAFCD9;
+  --mint-light:     #8efac01f;
+  --mint-dark:      #e3f5ec;
+  --white:          #FFFFFF;
+  --white-less:     #e6e6e6e6;
+  --black:          #000000;
+  --black-less:     #555;
+
+  /* ── background color variables ── */
+  --bg-page:        #D9BAFC;   
+  --bg-header:      #3D1A70;
+  --bg-card:        #FFFFFF;
+  --bg-card-alt:    #F7F0FF;
+  --bg-footer:      #2A1050;
+
+  /* ── Typography variables ── */
+  --font:     Verdana, Arial, Helvetica, sans-serif;
+  --lineHeight:    1.5;
+  --letterSpace:   0.05em;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family:    var(--font);
+  line-height:    var(--lineHeight);
+  letter-spacing: var(--letterSpace);
+  background-color: var(--purple-dark);
+  color: var(--purple-inkk);
+}
+
+main {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.5em;
+  color: var(--white);
+  margin-bottom: 5em;
+}
+
+h2 {
+  font-size: 1.7rem;
+  color: var(--purple-dark);
+  border-left: 5px solid var(--peach);
+  padding-left: 0.3em;
+  margin-bottom: 0.7em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--purple-dark);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--peach);
+  outline: none;
+}
+
+/* styling the general navigation bar for all pages */
+header {
+  background-color: var(--bg-page);
+  padding: 20px 30px;
+  position: relative;
+  top: auto;
+  border-bottom: 4px solid var(--peach);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header a span {
+  color: var(--bg-header);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+header a img {
+  width: 60px;
+  height: 60px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav ul li a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.25rem;
+  color: var(--bg-header);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid transparent;
+}
+
+header nav ul li a:hover {
+  color: var(--peach);
+  border-bottom-color: var(--peach);
+  background-color: var(--peach-light);
+}
+
+/* Styling for common Heading  */
+.jobs-heading, .apply-heading, .our-slogan {
+  text-align: center;
+  padding: 3.5rem 2rem 3rem;
+  margin-bottom: 0;
+  letter-spacing: 0.08em;
+  
+  /* 160degree inclined gradient */
+  background-image: linear-gradient(
+    160deg,
+    rgba(42,  16,  80, 0.92) 0%,
+    rgba(61,  26, 112, 0.78) 45%,
+    rgba(123, 63, 190, 0.85) 75%,
+    rgba(42,  16,  80, 0.95) 100%
+  );
+  background-color: var(--purple-inkk);
+}
+
+/* accessibility message pop-up when focused on the link */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);     
+    border: 0;
+}
+a:hover .sr-only,
+a:focus .sr-only {
+    position: static; 
+    width: auto;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+    clip-path: none;
+}
+
+/* styling for a jump link to main content */
+.skip-link {
+    /* layout */
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    top: 0;
+
+    /* appearance */
+    background-color: var(--mint);
+    color: var(--purple-inkk);
+    text-decoration: none;
+    padding: 10px;
+
+    /* behaviour */
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.skip-link:focus {
+    position: static;
+    transform: translateY(0);
+    opacity: 1;
+    outline: 2px solid #3D1A70;
+}
+
+/* a mini navigation section under page title for Position-description-page and jobs-application-page */
+.short-keys {
+  background-color: var(--purple-extreme);
+  padding: 0.75rem 2rem;
+  border-bottom: 3px solid var(--peach);
+}
+
+.short-keys ul, .two-btn{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  list-style: none;
+  margin: 1rem 2rem;
+}
+
+.short-keys ul li a {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  color: var(--white-less);
+  border: 1.5px solid var(--purple-lesser);
+  font-size: 0.9rem;
+  font-weight: 550;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border-radius: 20px;
+  transition: background-color 0.2s ease,
+              color            0.2s ease,
+              border-color     0.2s ease;
+}
+
+.short-keys ul li a:hover, .short-keys ul li a:focus {
+  background-color: var(--peach);
+  color: var(--purple-inkk);
+  border-color: var(--peach);
+  outline: none;
+}
+
+/* Global buttons */
+.apply-now, .two-btn button[type="submit"], .two-btn button[type="reset"] {
+  display: inline-block;
+  background-color: var(--purple-inkk);
+  color: var(--white);
+  font-weight: 700;
+  font-family: var(--font);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 3.2rem;
+  border-radius: 4px;
+  border: 2px solid var(--peach);
+  text-decoration: none;
+  transition: background-color 0.25s ease,
+              color           0.25s ease,
+              border-color    0.25s ease,
+              transform       0.15s ease;
+}
+ 
+.apply-now:hover, .apply-now:focus, .two-btn button[type="submit"]:hover, .two-btn button[type="reset"]:hover, .two-btn button[type="submit"]:focus, .two-btn button[type="reset"]:focus {
+  background-color: var(--peach);
+  color: var(--purple-inkk);
+  border-color: var(--purple-inkk);
+  transform: translateY(-2px);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Global Footer styling for all pages */
+footer {
+  background-color: var(--bg-footer); 
+  color: #E8D5FF;
+  padding: 3em 2.5em 0;
+  margin-top: 3rem;
+}
+
+.footer-section {
+  float: left;
+  width: 33%;
+  padding: 0 1.4em 2.5em;
+  box-sizing: border-box;
+}
+
+.footer-section:first-child {
+  padding-left: 0;
+}
+
+.footer-section:last-of-type {
+  padding-right: 0;
+}
+
+footer h3 {
+  color: var(--peach);  
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.9em;
+  padding-bottom: 0.45em;
+  border-bottom: 2px solid var(--mint);
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 0.8em;
+}
+
+footer a {
+  color: #C8A8F4;
+  font-size: 0.92em;
+  letter-spacing: 0.04em;
+}
+
+footer a:hover, footer a:focus {
+  color: var(--peach);
+  text-decoration: underline;
+}
+
+.copyright {
+  display: block; /* <small> is inline by default, needs this for clear to work */
+  clear: both;
+  text-align: center;
+  padding: 1.2em 0 1.4em;
+  border-top: 2px solid rgba(192, 142, 250, 0.25);
+  font-size: 0.82em;
+  color: rgba(232, 213, 255, 0.50);
+  letter-spacing: 0.06em;
+}
+/* The end of global styling across four pages */
+
+
+/* 
+About Us Page styling 
+*/
+/* Introduction & our slogan */
+.our-slogan {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-slogan h1 {
+  font-size: 3.5rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  letter-spacing: 0.09rem;
+}
+
+/* ── Quote card ── */
+.our-slogan blockquote {
+  background-color: var(--purple-black);
+  border: 2px solid var(--peach);
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  max-width: 700px;
+}
+
+.our-slogan blockquote p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--white);
+  letter-spacing: 0.15rem;
+  text-shadow: 3px 2px 10px var(--black);
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.our-slogan blockquote cite {
+  display: block;
+  float: right;
+  font-size: 0.90rem;
+  color: var(--peach);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.our-slogan p {
+  margin-top: 1.6rem;
+  color: var(--white-less);
+  font-size: 1.05rem;
+  max-width: 650px;
+  text-shadow: 2px 1px 6px var(--black);
+}
+
+/* General card style for all sections except the first one */
+main > section:not(:first-child) {
+  background-color: var(--bg-card);
+  margin: 2rem auto;
+  max-width: 1100px;
+  padding: 2.5rem 3rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px var(--black);
+  border-top: 5px solid var(--purple);
+}
+
+/* Group Details */
+.group-details ul {
+  list-style: square;
+  margin-left: 1.1rem;
+}
+
+.group-details ul ul {
+  list-style: disc;
+  margin-top: 0.3rem;
+  margin-left: 1.5rem;
+}
+
+.group-details ul ul ul {
+  list-style: circle;
+  margin-left: 1.5rem;
+}
+
+.group-details li {
+  margin-bottom: 0.5rem;
+}
+
+.group-details > ul > li {
+  margin-bottom: 1rem;
+  color: var(--purple-ink);
+}
+
+/* Members & contributions */
+.contribution dl {
+  margin-top: 1.2rem;
+}
+
+/* Member name row */
+.contribution dt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--purple-deeper);
+  color: var(--white);
+  padding: 0.8rem 1.25rem;
+  border-radius: 5px 5px 0 0;
+  margin-top: 1.6rem;
+  font-size: 1.05rem;
+  border-left: 5px solid var(--peach);
+  gap: 20px;
+}
+
+/* Member detail card */
+.contribution dd {
+  background-color: var(--bg-card-alt);
+  border: 1px solid var(--purple-lesser);
+  border-radius: 0 0 5px 5px;
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+.contribution dd li {
+  list-style: none;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: var(--lineHeight);
+}
+
+/* ── Quotes inside definition list ── */
+.contribution dd blockquote {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-left: 5px solid var(--mint);
+  background-color: var(--mint-light);
+  border-radius: 0 8px 8px 0;
+}
+
+.contribution dd blockquote p:first-child {
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: left;
+  color: var(--black);
+}
+
+.contribution dd blockquote p:nth-child(2) {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  color: var(--purple-extreme);
+}
+
+.contribution dd blockquote cite {
+  font-size: 0.90rem;
+  color: var(--purple-dark);
+  display: flex;
+  justify-content: right;
+  font-weight: 600;
+}
+
+/* Group Photo using grid */
+.gallery {
+  display: grid;
+  max-width: 700px;
+  margin: 1.2rem auto;
+}
+
+/* Stack all figures in the exact same grid space and hide them */
+.gallery figure {
+  grid-area: 1 / 1; 
+  opacity: 0;
+  
+  /* Ignore clicks when invisible */
+  pointer-events: none; 
+  transition: opacity 0.3s ease;
+}
+
+.gallery label {
+  display: block;
+  cursor: pointer;
+}
+
+/* Reveal the correct figure when its corresponding radio is checked */
+#img1:checked ~ .gallery .pic1,
+#img2:checked ~ .gallery .pic2,
+#img3:checked ~ .gallery .pic3 {
+  opacity: 1;
+  
+  /* Re-enable clicks */
+  pointer-events: auto; 
+}
+
+.gp-pic figure img {
+  width: auto;
+  height: auto;
+  border: 3px solid var(--purple);
+  border-radius: 6px;
+  box-shadow: 0 5px 8px var(--purple);
+  outline-offset: 2px;
+}
+
+.gp-pic figcaption {
+  text-align: center;
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  color: var(--black-less);
+  font-style: italic;
+  border-top: 2px solid var(--peach);
+  padding-top: 1rem;
+}
+
+/* Fun Facts Table */
+.fun-fact table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  font-size: 0.94rem;
+}
+
+.table-container {
+    overflow: auto;
+}
+
+.fun-fact table caption {
+  caption-side: bottom;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--purple-deeper);
+  margin-bottom: 0.5rem;
+  padding-left: 0.6rem;
+}
+
+/* Bold headers with triadic hex colours */
+.fun-fact thead tr {
+  background-color: var(--purple-inkk);
+}
+
+.fun-fact thead th {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  color: var(--peach);  
+  border: 1px solid var(--purple-deeper); 
+  font-size: 0.90rem;
+}
+
+.fun-fact tbody tr:nth-child(odd) {
+  background-color: var(--bg-card-alt);
+}
+
+.fun-fact tbody tr:nth-child(even) {
+  background-color: var(--bg-card);
+}
+
+.fun-fact tbody tr {
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.fun-fact tbody tr:hover {
+  background-color: var(--mint);
+  transform: scale(1.005);
+}
+
+.fun-fact td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--purple);
+  color: var(--purple-extreme);
+  vertical-align: center;
+  text-align: center;
+}
+
+.fun-fact td:first-child {
+  font-weight: 700;
+  color: var(--purple-inkk); 
+  white-space: nowrap;
+}
+/* 
+The End of About Us Page Styling
+*/
+
+
+/* 
+Job Positions Description Page Styling 
+*/
+/* Benefits aside */
+.job-aside {
+  float: right;
+  width: 25%;
+  position: sticky;
+  top: 0;
+  overflow: auto;
+
+  background-color: var(--purple-inkk);
+  border-left: 5px solid var(--peach);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem 1.3rem 0.5rem;
+  margin: 2rem 2rem 2rem 1.5rem;
+  box-shadow: 0 2px 10px var(--black-less);
+}
+ 
+.job-aside h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--peach);
+}
+ 
+.job-aside ul {
+  list-style: none;
+  padding: 0.01rem;
+}
+ 
+.job-aside ul li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.90rem;
+  color: var(--white-less);
+  line-height: var(--lineHeight);
+}
+ 
+.job-aside ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-size: 0.9rem;
+  color: var(--mint);
+  line-height: 2;
+}
+ 
+/* Job cards container */
+.available-jobs {
+  overflow: hidden;
+  padding: 1.5rem 2rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Individual job card */
+.job {
+  background-color: var(--bg-card);
+  border-top: 5px solid var(--purple-dark);
+  border-left: 3px solid var(--purple-light);
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 5px rgba(42, 16, 80, 0.18);
+  transition: box-shadow 0.25s ease,border-left-color 0.25s ease;
+}
+ 
+.job:hover {
+  box-shadow: 0 4px 18px var(--black-less);
+  border-left-color: var(--peach);
+}
+ 
+/* Job title heading */
+.job h2 {
+  margin-bottom: 0.3rem;
+}
+ 
+/* Sub-section headings (Salary, Short Desc,...) */
+.job h3:not(.ref-no) {
+  font-size: 0.90rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-inkk);
+  border-bottom: 1.5px solid var(--peach);
+  padding-bottom: 0.3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Reference Number heading */
+.ref-no {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  background-color: var(--purple-deeper);
+  padding: 0.5em 0.9em;
+  border-radius: 10px;
+  margin-bottom: 1.4rem;
+}
+ 
+/* Short description */
+.short-description {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: var(--black-less);
+  background-color: var(--bg-card-alt);
+  border-left: 4px solid var(--mint);
+  border-radius: 0 5px 5px 0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  line-height: var(--lineHeight);
+}
+ 
+.job ul, .job ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+ 
+.job li {
+  font-size: 0.93rem;
+  color: var(--purple-extreme);
+  margin-bottom: 0.35rem;
+  line-height: 1.8rem;
+}
+ 
+.job ol li::marker {
+  font-weight: 800;
+  color: var(--purple-deeper);
+}
+
+/* Apply Now */
+.apply-box {
+  text-align: center;
+  padding: 2rem 0;
+}
+/* 
+The End of Job Positions Description Page Styling
+*/
+
+
+/* 
+Job Application Page Styling
+*/
+.apply-heading h1 {
+  margin-bottom: 0;
+  letter-spacing: 0.08em;
+}
+
+/* call-to-action jump link button styling */
+.cta-btn {
+    background-color: var(--purple-extreme);
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--white-less);
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+.cta-btn:hover {
+    background-color: var(--peach);
+    color: var(--purple-extreme);
+    font-weight: bold;
+}
+
+/* form container */
+#application-form {
+  max-width: 1100px;
+  margin: 2rem auto 3rem;
+  padding: 0 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Sections of Question cards */
+.form-section {
+  background-color: var(--bg-card-alt);
+  border-top: 5px solid var(--purple-dark);
+  border-left: 3px solid var(--purple-light);
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 1px 5px rgba(42, 16, 80, 0.18);
+}
+
+.form-section h2 {
+    margin-bottom: 1rem;
+}
+
+/* Label in the job section */
+#job label {
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: var(--purple-inkk);
+
+  display: inline-block;
+  width: 32%;
+  text-align: center;
+}
+
+#jobref {
+  display: inline-block;
+  width: 65%;
+  box-sizing: border-box;
+
+  flex-wrap: nowrap;
+  padding: 0.55rem 0.8rem;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  letter-spacing: var(--letterSpace);
+  line-height: var(--lineHeight);
+  color: var(--purple-inkk);
+  background-color: var(--white);
+  border: 1.5px solid var(--purple-lesser);
+  border-radius: 5px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#job label, #jobref {
+  vertical-align: middle;
+}
+
+/* available positions container */
+#job div {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-left: 5px solid var(--mint);
+  background-color: var(--mint-dark);
+  border-radius: 0 8px 8px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+ 
+#job-help ul {
+  list-style: none;
+}
+ 
+#job-help ul li {
+  position: relative;
+  padding-left: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.86rem;
+}
+ 
+#job-help ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--purple-deeper);
+}
+
+/* Applicant Details and Skills sections */
+.form-section > fieldset {
+  border: 1.5px solid var(--purple-lesser);
+  border-radius: 6px;
+  padding: 1.4rem 1.5rem 1.2rem;
+  background-color: var(--bg-card-alt);
+  margin-bottom: 1rem;
+  
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem 1.5rem;
+  align-items: center;
+  justify-content: left;
+}
+
+/* Gender fieldset container */
+.form-section fieldset fieldset {
+  grid-column: 1 / -1;
+  border: 1.5px solid var(--purple-light);
+  border-radius: 5px;
+  padding: 1.5rem 3rem;
+  background-color: var(--bg-card);
+ 
+  /* Override the outer grid with flexbox */
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 1rem 1.8rem;
+}
+
+.form-section fieldset legend, #applicant-details fieldset fieldset legend {
+  font-size: 0.9rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.3em 0.9em;
+  border-radius: 5px;
+  background-color: var(--purple-extreme);
+  color: var(--peach);
+}
+
+#applicant-details fieldset fieldset legend {
+  font-size: 0.85rem;
+  background-color: var(--black-less);
+  color: var(--white);
+}
+
+.form-section > fieldset label:not(label[for = "others"]) {
+  font-size: 0.88rem;
+  font-weight: bold;
+  letter-spacing: var(--letterSpace);
+  text-align: right;
+  color: var(--purple-inkk);
+}
+
+.form-section > fieldset label[for = "others"] {
+  font-size: 0.88rem;
+  font-weight: bold;
+  letter-spacing: var(--letterSpace);
+  color: var(--purple-inkk);
+}
+
+.form-section fieldset fieldset div label {
+  font-size: 0.88rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  color: var(--purple-inkk);  
+}
+
+/* Radio input */
+.form-section input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--purple-deeper);
+}
+
+/* ── Text inputs & select in the grid ── */
+.form-section input[type="text"]:not(#jobref),
+.form-section input[type="email"],
+.form-section input[type="tel"],
+.form-section select {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  letter-spacing: var(--letterSpace);
+  line-height: var(--lineHeight);
+  color: var(--purple-inkk);
+  background-color: var(--white);
+  border: 1.5px solid var(--purple-lesser);
+  border-radius: 5px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-section input[type="text"]:focus,
+.form-section input[type="email"]:focus,
+.form-section input[type="tel"]:focus,
+.form-section select:focus {
+  border-color: var(--purple-deeper);
+  box-shadow: 0 0 0 3px var(--purple-light);
+}
+
+/* Valid state — green-tinted border using mint */
+.form-section input[type="text"]:user-valid,
+.form-section input[type="email"]:user-valid,
+.form-section input[type="tel"]:user-valid {
+  border-color: var(--mint);
+}
+
+/* Invalid state after interaction */
+.form-section input[type="text"]:user-invalid,
+.form-section input[type="email"]:user-invalid,
+.form-section input[type="tel"]:user-invalid {
+  border-color: #e05c5c;
+  box-shadow: 0 2px 0 2px rgba(224, 92, 92, 0.18);
+}
+
+/* pointer appearance at select input */
+.form-section select {
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+#skills fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  width: calc(25% - 1rem);
+}
+
+#skills input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--purple-deeper);
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+  flex-shrink: 0;
+}
+ 
+/* Each label after a checkbox becomes a chip */
+#skills input[type="checkbox"] + label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--purple-inkk);
+  background-color: var(--bg-card-alt);
+  border: 1.5px solid var(--purple-lesser);
+  border-radius: 20px;
+  padding: 0.35rem 1rem 0.35rem 0.5rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.2s ease,
+              border-color     0.2s ease,
+              color            0.2s ease;
+  vertical-align: middle;
+}
+ 
+/* Checked state — chip highlights */
+#skills input[type="checkbox"]:checked + label {
+  background-color: var(--purple-deeper);
+  border-color: var(--purple-deeper);
+  color: var(--white);
+}
+ 
+#skills input[type="checkbox"] + label:hover {
+  border-color: var(--purple-deeper);
+  background-color: var(--purple-light);
+}
+ 
+#skills input[type="checkbox"] {
+  position: relative;
+  opacity: 1;
+  /* Keep visible for native validation & accessibility */
+}
+ 
+/* ── "Other Skills" textarea label ── */
+#skills label[for="others"] {
+  display: block;
+  width: 100%;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--purple-inkk);
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+ 
+/* ── Textarea ── */
+.form-section textarea {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font);
+  font-size: 0.90rem;
+  color: var(--purple-inkk);
+  background-color: var(--white);
+  border: 1.5px solid var(--purple-lesser);
+  border-radius: 5px;
+  resize: vertical;
+  line-height: var(--lineHeight);
+  letter-spacing: var(--letterSpace);
+  min-height: 110px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.form-section textarea:focus {
+  border-color: var(--purple-deeper);
+  box-shadow: 0 0 0 3px var(--purple-light);
+  outline: none;
+} 
+
+/* Hide it normally */
+.error-text {
+  display: none;
+  grid-column: 1 / -1;
+  color: #e05c5c;
+  font-size: 0.8rem;
+  margin-top: 0rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Show it ONLY when invalid */
+input:user-invalid + .error-text, select:user-invalid + .error-text, .form-section fieldset fieldset:has(input[type="radio"]:user-invalid) .error-text {
+    display: block;
+    text-align: right;
+}
+
+/* specifically for jobref only */
+#jobref:user-invalid + .error-text {
+    display: block;
+    text-align: left;
+}
+/* 
+The end of Job Application Page styling
+*/
+
+
+/* 
+Home Page Styling
+*/
+.content-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+  width: 100%;
+}
+ 
+.intro-box {
+  position: relative;
+  border-radius: 10px;
+  padding: 3.5rem 3rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+  overflow: hidden;
+  border-top: 5px solid var(--peach);
+  background-image:
+    linear-gradient(135deg,
+      rgba(42,  16,  80, 0.93) 0%,
+      rgba(61,  26, 112, 0.82) 38%,
+      rgba(42,  16,  80, 0.90) 100%
+    ),
+    url('images/computer-program-coding-screen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--purple-inkk);
+  box-shadow: 0 6px 24px rgba(42, 16, 80, 0.40);
+}
+ 
+/* Company info column */
+.grouop-info {
+  flex: 2;
+  min-width: 260px;
+}
+ 
+/* Badge pill */
+.group-badge {
+  display: inline-block;
+  background-color: rgba(250, 192, 142, 0.15);
+  border: 1px solid var(--peach);
+  padding: 0.3rem 1.1rem;
+  border-radius: 40px;
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--peach);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+ 
+/* h1 inside hero: global rule already sets white + 3.5em.
+   We only tighten margin and tracking. */
+.group-info h1 {
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+  font-size: 3rem;
+}
+ 
+/* Department name */
+.dept-name {
+  font-size: 0.97rem;
+  color: var(--mint);
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--mint);
+  padding-left: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: var(--lineHeight);
+}
+ 
+/* ── Buttons ── */
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+ 
+.job-btn, .aboutus-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition: background-color 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.15s ease;
+}
+ 
+/* peach fill on dark bg */
+.job-btn, .aboutus-btn {
+  background-color: var(--peach);
+  color: var(--purple-inkk);
+  border: 2px solid var(--peach);
+}
+ 
+.job-btn:hover, .job-btn:focus, .aboutus-btn:hover, .aboutus-btn:focus {
+  background-color: var(--purple-inkk);
+  color: var(--peach);
+  border-color: var(--peach);
+  transform: translateY(-2px);
+  outline: none;
+}
+ 
+.logo-img {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+ 
+.logo-img img {
+  background: var(--white-less); 
+  width: 150px;
+  height: 150px;
+  border: 5px solid var(--purple);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(217, 186, 252, 0.55);
+  outline: 3px solid var(--peach);
+  outline-offset: 1px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+ 
+.logo-img img:hover {
+  transform: scale(1.025);
+}
+ 
+/* Caption below company logo image */
+.logo-img p {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--peach);
+  font-style: italic;
+  border-top: 2px solid var(--peach);
+  padding-top: 0.6rem;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2. Slogan Box Styling (Similar to Insight boxes) */
+.slogan-box {
+    background-color: var(--purple-light); /* Matching your theme */
+    border-left: 5px solid var(--purple-inkk);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center; /* Centers the quote */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slogan-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    color: var(--purple-inkk);
+    margin-bottom: 0.5rem;
+}
+
+.slogan-cite {
+    display: block;
+    font-size: 1rem;
+    color: var(--black);
+    font-style: normal;
+    text-align: right;
+}
+
+.insights {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+ 
+/* Description cards styling */
+.card {
+  background-color: var(--bg-card);
+  border-top: 5px solid var(--purple-dark);
+  border-left: 3px solid var(--purple-light);
+  border-radius: 8px;
+  padding: 1.8rem 2rem;
+  flex: 1;
+  min-width: 220px;
+  box-shadow: 0 2px 10px rgba(42, 16, 80, 0.12);
+  transition: box-shadow 0.25s ease, border-left-color 0.25s ease,
+              transform 0.2s ease;
+}
+ 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(42, 16, 80, 0.20);
+  border-left-color: var(--peach);
+}
+ 
+.card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--purple-inkk);
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--peach);
+  padding-left: 0.6rem;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+ 
+.card p {
+  color: var(--black-less);
+  font-size: 0.91rem;
+  line-height: var(--lineHeight);
+}
+/* 
+The End of Home Page Styling
+*/
+
+
+/* media query for jobs.html making aside responsive */
+@media (max-width: 700px) {
+  .job-aside {
+    /* position: static; */
+    float: right;
+    margin: 1.5rem 1rem;
+    border-left: none;
+    border-top: 5px solid var(--peach);
+    border-radius: 8px;
+    font-size: 0.5rem;
+  }
+ 
+  .available-jobs {
+    padding: 0.5rem 0.5rem 0;
+    font-size: 0.5rem;
+  }
+ 
+  .job {
+    padding: 0.8rem;
+  }
+}
+
+/* media query for apply.html skills sections checked boxes arrangement */
+@media (max-width: 700px) {
+  .skill-item {
+    display: flex;
+    align-items: center;
+    width: calc(50% - 1rem);
+  }
+}
+
+/* global media query responsive navigation setup */
+@media (max-width: 803px) {
+  header {
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  header nav ul {
+    justify-content: center;
+  }
+}
