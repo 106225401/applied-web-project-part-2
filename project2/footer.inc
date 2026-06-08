@@ -1,0 +1,51 @@
+<?php
+/* =====================================================
+ *  footer.inc – Shared Footer Include File
+ *  NextGen Devs Website – Applied Web Project Part 2
+ *  Author: Afif (Layout Support & Consistency)
+ *  ===================================================== */
+?>
+
+<!-- Site Footer -->
+<footer>
+    <!-- Project Links Section -->
+    <section class="footer-section" aria-labelledby="project-links-title">
+        <h3 id="project-links-title">Project</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/106225401/applied-web-project-part-2" target="_blank" rel="noopener">
+                    GitHub Repository (Source Code)
+                    <span class="sr-only">(opens in new window)</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://student-team-cos10026.atlassian.net/jira/software/projects/AWPP1/boards/4" target="_blank" rel="noopener">
+                    Jira (Project Management)
+                    <span class="sr-only">(opens in new window)</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Quick Links / Navigation Section -->
+    <section class="footer-section" aria-labelledby="quick-links-title">
+        <h3 id="quick-links-title">Quick Links</h3>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="jobs.php">Jobs</a></li>
+                <li><a href="apply.php">Apply</a></li>
+                <li><a href="about.php">About Us</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="footer-section" aria-labelledby="contact-us-title">
+        <h3 id="contact-us-title">Contact Us</h3>
+        <p>Email: <a href="mailto:info@nextgen.com">info@nextgen.com</a></p>
+    </section>
+
+    <!-- Copyright Notice -->
+    <small class="copyright">Copyright &copy; 2026 NextGen Devs. All rights reserved.</small>
+</footer>
