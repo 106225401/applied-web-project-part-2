@@ -10,7 +10,7 @@
     <title>NextGen Devs | Home - Digital Learning & Innovation</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <!-- embedded CSS -->
     <style>
@@ -36,8 +36,8 @@
                     <div class="dept-name">📘 Digital Learning &amp; Innovation Department</div>
                     
                     <div class="btn-group">
-                        <a href="jobs.html" class="job-btn">Join our team</a>
-                        <a href="about.html" class="aboutus-btn">Learn more</a>
+                        <a href="jobs.php" class="job-btn">Join our team</a>
+                        <a href="about.php" class="aboutus-btn">Learn more</a>
                     </div>
                 </div>
 

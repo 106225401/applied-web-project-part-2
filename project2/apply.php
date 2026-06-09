@@ -14,7 +14,7 @@
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
 
         <!-- Embedded CSS styling -->
         <style>
@@ -75,7 +75,7 @@
                     <span class="error-text">Please enter a valid job reference number (refer to the available positions).</span>
 
                     <div id="job-help" style="color: var(--purple-gray);">
-                        <a href="jobs.html">Available positions:</a>
+                        <a href="jobs.php">Available positions:</a>
                         <ul>
                             <li>DLR01 - Digital Learning Support Officer</li>
                             <li>LMS02 - Learning Management System (LMS) Administrator</li>

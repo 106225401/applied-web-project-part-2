@@ -11,7 +11,7 @@
         <title>Available Job Positions</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
 
         <!-- Embedded CSS for UI Styling -->
         <style>
@@ -142,7 +142,7 @@
                     </li>
                 </ol>
                 <div class="apply-box">
-                    <a href="apply.html" class="apply-now" style="font-size:large">Apply Now</a>
+                    <a href="apply.php" class="apply-now" style="font-size:large">Apply Now</a>
                 </div>
             </section>
 
@@ -217,7 +217,7 @@
                     </li>
                 </ol>
                 <div class="apply-box">
-                    <a href="apply.html" class="apply-now" style="font-size:large">Apply Now</a>
+                    <a href="apply.php" class="apply-now" style="font-size:large">Apply Now</a>
                 </div>
             </section>
 
@@ -294,7 +294,7 @@
                     </li>
                 </ol>
                 <div class="apply-box">
-                    <a href="apply.html" class="apply-now" style="font-size:large">Apply Now</a>
+                    <a href="apply.php" class="apply-now" style="font-size:large">Apply Now</a>
                 </div>
             </section>
         </div>

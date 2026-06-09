@@ -12,7 +12,7 @@
     <title>About Us</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 
     <!-- Embedded CSS for UI Styling -->
     <style>
@@ -41,7 +41,7 @@
             <h1 id="about-our-slogan">Who We Are</h1>
             <!-- slogan of our team -->
             <blockquote>
-                <p><a href="apply.html" target="_blank">"Code, Create, Conquer" </a></p>
+                <p><a href="apply.php" target="_blank">"Code, Create, Conquer" </a></p>
                 <cite>— NextGen Devs</cite>
             </blockquote>
             <!-- introductory paragraph to our team -->
@@ -118,7 +118,7 @@
                 <dd>
                     <ul>
                         <li class="roles"><strong>Role:</strong> Organizer &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility: </strong><code>apply.html</code></li>
+                        <li class="indiv-contrib"><strong>Individual Responsibility: </strong><code>apply.php</code></li>
                         <li class="share-contrib"><strong>Contributions:</strong> manage Github &amp; Jira project, give inputs on page design, organize team communication</li>
                         <li class="speak-lang"><strong>Languages:</strong> Mandarin, Bahasa Melayu, &amp; English</li>
                         <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;"></li>
@@ -142,7 +142,7 @@
                 <dd>
                     <ul>
                         <li class="roles"><strong>Role:</strong> Leader &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>jobs.html</code></li>
+                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>jobs.php</code></li>
                         <li class="share-contrib"><strong>Contributions:</strong> oversee the project progress and completion status, act as a group representative, give inputs on page design</li>
                         <li class="speak-lang"><strong>Languages:</strong> Burmese &amp; English</li>
                         <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;"></li>
@@ -166,7 +166,7 @@
                 <dd>
                     <ul>
                         <li class="roles"><strong>Role:</strong> Editor &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>about.html</code> &plus; <code>styles.css</code></li>
+                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>about.php</code> &plus; <code>styles.css</code></li>
                         <li class="share-contrib"><strong>Contributions:</strong> review &amp; edit all files for consistency, formatting, and accessibility, design the external css file</li>
                         <li class="speak-lang"><strong>Languages:</strong> Burmese, English, &amp; German</li>
                         <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;"></li>
@@ -190,7 +190,7 @@
                 <dd>
                     <ul>
                         <li class="roles"><strong>Role:</strong> Manager &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>index.html</code> &plus; <code>styles.css</code></li>
+                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>index.php</code> &plus; <code>styles.css</code></li>
                         <li class="share-contrib"><strong>Contributions:</strong> monitor the project workflow on Jira, design the external css file</li>
                         <li class="speak-lang"><strong>Languages:</strong> Bahasa Melayu &amp; English</li>
                         <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;"></li>

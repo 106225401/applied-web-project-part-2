@@ -3,7 +3,7 @@
 
 <header>
     <!-- Top bar logo -->
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
         <img src="images/logo.png" alt="NextGen Devs logo" loading="eager">
         <span>NextGen Devs</span>
     </a>
