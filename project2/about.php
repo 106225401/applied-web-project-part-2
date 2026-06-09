@@ -33,26 +33,7 @@
 </head>
 
 <body>
-    <!-- Skip link for keyboard users -->
-    <a href="#main" class="skip-link">Skip to main content</a>
-
-    <!-- header -->
-    <header>
-        <!-- company logo and common navigation menu -->
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="NextGen Devs logo">
-            <span>NextGen Devs</span>
-        </a>
-
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="apply.html">Apply</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </nav>
-    </header>   
+    <?php include 'header.inc';?>
 
     <main id="main">
         <!-- Intro to our team -->
@@ -305,42 +286,6 @@
         </section>
     </main>
     
-    <!-- footer -->
-    <footer>
-        <!-- Project links section -->
-        <section class="footer-section">
-            <h3>Project</h3>
-            <ul>
-                <li><a href="https://github.com/106225401/applied-web-project-part-1" target="_blank">GitHub Repository (Source Code)
-                    <span class="sr-only">(opens in new window)</span>
-                </a></li>
-                <li><a href="https://student-team-cos10026.atlassian.net/jira/software/projects/AWPP1/boards/4" target="_blank">Jira (Project Management)
-                    <span class="sr-only">(opens in new window)</span>
-                </a></li>
-            </ul>
-        </section>
-
-        <!-- Navigation menu section -->
-        <section class="footer-section">
-            <h3>Quick Links</h3>
-            <nav aria-label="Footer navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="jobs.html">Jobs</a></li>
-                    <li><a href="apply.html">Apply</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                </ul>
-            </nav>
-        </section>
-
-        <!-- Email contact section -->
-        <section class="footer-section">
-            <h3>Contact Us</h3>
-            <p>Email: <a href="mailto:info@nextgen.com" >info@nextgen.com</a></p>
-        </section>
-
-        <!-- Copyright-->
-        <small class="copyright">Copyright &copy; 2026 NextGen Devs. All rights reserved.</small>    
-    </footer>
+    <?php include 'footer.inc';?>
 </body>
 </html>
