@@ -1,5 +1,12 @@
 <!--Job Application Page-->
 
+<?php
+    session_start();
+
+    $errors = $_SESSION["errors"] ?? [];
+    $user_input = $_SESSION["form_data"] ?? [];
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
