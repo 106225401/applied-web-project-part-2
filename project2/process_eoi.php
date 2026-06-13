@@ -92,4 +92,20 @@
 
     $errors = [];
     $user_input = [];
+
+    foreach ($fields as $field) {
+
+        $$field = sanitise_input($_POST[$field] ?? "");
+        $user_input[$field] = $$field;
+
+        if (empty($user_input[$field])) {
+            $errors[$field] = "$labels[$field] is required.";
+            continue;
+        }
+
+        if (isset($validation[$field]) &&
+            !preg_match($validation[$field], $user_input[$field])) {
+            $errors[$field] = $invalid_msg[$field];
+        }
+    }
 ?>
