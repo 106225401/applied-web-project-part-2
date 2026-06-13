@@ -123,4 +123,14 @@
     $skill = implode(", ", array_map("sanitise_input", $_POST["skill"] ?? []));
     $others = sanitise_input($_POST["others"] ?? "");
     $user_input["others"] = $others;
+
+    if (!empty($errors)) {
+        $_SESSION["errors"] = $errors;
+        $_SESSION["form_data"] = $user_input;
+
+        session_write_close();
+
+        header("Location: apply.php");
+        exit();
+    }
 ?>
