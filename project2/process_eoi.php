@@ -41,4 +41,55 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+
+    $fields = [
+        "jobref",
+        "fname",
+        "lname",
+        "dob",
+        "gender",
+        "street",
+        "suburb",
+        "state",
+        "postcode",
+        "email",
+        "phone"
+    ];
+
+    $labels = [
+        "jobref" => "Job Reference Number",
+        "fname" => "First Name",
+        "lname" => "Last Name",
+        "dob" => "Date of Birth",
+        "gender" => "Gender",
+        "street" => "Street Address",
+        "suburb" => "Suburb",
+        "state" => "State",
+        "postcode" => "Postcode",
+        "email" => "Email",
+        "phone" => "Phone"
+    ];
+
+    $validation = [
+        "fname" => "/^[A-Za-z ]{1,20}$/",
+        "lname" => "/^[A-Za-z ]{1,20}$/",
+        "dob" => "/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/[0-9]{4}$/",
+        "postcode" => "/^[0-9]{4}$/",
+        "phone" => "/^[0-9]{8,12}$/"
+    ];
+
+    $invalid_msg = [
+        "fname" => "First name must be max 20 letters only.",
+        "lname" => "Last name must be max 20 letters only.",
+        "dob" => "Date of birth must be in dd/mm/yyyy format.",
+        "postcode" => "Postcode must be exactly 4 digits.",
+        "email" => "Invalid email format.",
+        "phone" => "Phone number must be 8-12 digits.",
+        "skill" => "At least one skill must be selected."
+    ];
+
+    $_SESSION["form_data"] = $_POST;
+
+    $errors = [];
+    $user_input = [];
 ?>
