@@ -108,4 +108,19 @@
             $errors[$field] = $invalid_msg[$field];
         }
     }
+
+    if (!filter_var($user_input[$email], FILTER_VALIDATE_EMAIL)) {
+        $errors["email"] = $invalid_msg["email"];
+    }
+
+    if (empty($_POST["skill"])) {
+        $errors["skill"] = $invalid_msg["skill"];
+        $user_input["skill"] = [];
+    }
+    else {
+        $user_input["skill"] = $_POST["skill"];
+    }
+    $skill = implode(", ", array_map("sanitise_input", $_POST["skill"] ?? []));
+    $others = sanitise_input($_POST["others"] ?? "");
+    $user_input["others"] = $others;
 ?>
