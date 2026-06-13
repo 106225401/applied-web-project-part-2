@@ -68,7 +68,7 @@
             </nav>
 
             <form id="application-form" aria-labelledby="apply-title"
-                action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                action="process_eoi.php" method="post" novalidate>
 
                 <!-- Position selection section -->
                 <section id="job" class="form-section" aria-labelledby="job-title">
