@@ -133,4 +133,55 @@
         header("Location: apply.php");
         exit();
     }
+
+    $sql = "
+    INSERT INTO eoi
+    (
+        jobref,
+        fname,
+        lname,
+        dob,
+        gender,
+        street,
+        suburb,
+        state,
+        postcode,
+        email,
+        phone,
+        skill,
+        others
+    )
+    VALUES
+    (
+        '$jobref',
+        '$fname',
+        '$lname',
+        '$dob',
+        '$gender',
+        '$street',
+        '$suburb',
+        '$state',
+        '$postcode',
+        '$email',
+        '$phone',
+        '$skill',
+        '$others'
+    )
+    ";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $eoi_number = mysqli_insert_id($conn);
+
+        echo "<h1>Application Submitted Successfully</h1>";
+        echo "<p>Your EOI Number is: $eoi_number</p>";
+        echo "<p><a href='index.php'>Return Home</a></p>";
+    }
+
+    else {
+        echo "Database error: " . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
 ?>
