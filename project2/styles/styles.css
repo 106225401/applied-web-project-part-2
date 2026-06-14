@@ -265,7 +265,11 @@ a:focus .sr-only {
 }
 
 /* Global buttons */
+<<<<<<< HEAD
 .apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a {
+=======
+.apply-now, .two-btn button[type="submit"], .two-btn button[type="reset"], .submit-btn, .btn-logout {
+>>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
@@ -284,8 +288,12 @@ a:focus .sr-only {
               transform       0.15s ease;
 }
  
+<<<<<<< HEAD
 .apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
 .two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .return-link a:hover {
+=======
+.apply-now:hover, .apply-now:focus, .two-btn button[type="submit"]:hover, .two-btn button[type="reset"]:hover, .two-btn button[type="submit"]:focus, .two-btn button[type="reset"]:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
+>>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);
@@ -1752,7 +1760,11 @@ Start of manage page styling
     padding: 0.7rem 0.9rem;
     text-align: left;
     font-weight: 600;
+<<<<<<< HEAD
     color: var(--purple-deeper);
+=======
+    color: var(--muted);
+>>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1844,6 +1856,7 @@ Start of manage page styling
 /* 
 The end of manage page styling
 */
+<<<<<<< HEAD
 
 /* 
 Start of Successful Application sent
@@ -1878,6 +1891,8 @@ Start of Successful Application sent
 /* 
 End of Successful Application sent
 */
+=======
+>>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
 
 /* media query for jobs.html making aside responsive */
 @media (max-width: 700px) {

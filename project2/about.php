@@ -1,5 +1,29 @@
 <!-- About Us page -->
 
+<?php
+require_once 'settings.php';
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+$members  = [];
+$db_error = '';
+
+if (!$conn) {
+    $db_error = 'Unable to load member data right now.';
+} else {
+    mysqli_set_charset($conn, 'utf8mb4');   // so foreign-language quotes display correctly
+    $result = mysqli_query($conn, "SELECT * FROM aboutus ORDER BY id");
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $members[] = $row;
+        }
+    } else {
+        $db_error = 'Unable to load member data right now.';
+    } 
+
+    mysqli_close($conn);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +33,10 @@
     <meta name="keywords" content="nextgen devs, about us, digital learning, innovation, research">
     <meta name="author" content="Ye Htet Aung">
 
-    <title>About Us</title>
+    <title>About Us | NextGenDevs</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
     <!-- Embedded CSS for UI Styling -->
     <style>
@@ -107,103 +131,39 @@
                 Below are a brief profile of each member, their roles &amp; contributions, and a personal quote.
             </p>
 
+            <!-- Rendering data from database for each member by looping -->
             <dl>
-                <!-- member 1 -->
-                <dt>
-                    <span class="name"><strong>Member 1:</strong> Ng Jing Yee (Jingyee)</span>
+                <?php if ($db_error != ''): ?>
+                    <p><?= htmlspecialchars($db_error) ?></p>
+                <?php elseif (empty($members)): ?>
+                    <p>No member contribution found.</p>
+                <?php else: ?>
+                    <?php foreach($members as $m): ?>
+                    <dt>
+                        <span class="name"><strong>Member <?=  htmlspecialchars($m['id']) ?>:</strong> <?= htmlspecialchars($m['full_name']) ?> (<?= htmlspecialchars($m['nickname']) ?>)</span>
 
-                    <span class="id">106225401</span>
-                </dt>
+                        <span class="id"><?= htmlspecialchars($m['student_id']) ?></span>
+                    </dt>
 
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Organizer &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility: </strong><code>apply.php</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> manage Github &amp; Jira project, give inputs on page design, organize team communication</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Mandarin, Bahasa Melayu, &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;"></li>
-                    </ul>
+                    <dd>
+                        <ul>
+                            <li class="roles"><strong>Role:</strong> <?= htmlspecialchars($m['role']) ?></li>
+                            <li class="indiv-contrib"><strong>Project Part 1 Responsibility: </strong><?= htmlspecialchars($m['project_part1']) ?></li>
+                            <li class="share-contrib"><strong>Project Part 2 Responsibility:</strong><?= htmlspecialchars($m['project_part2']) ?></li>
+                            <li class="speak-lang"><strong>Languages:</strong> <?= htmlspecialchars($m['languages']) ?></li>
+                            <li class="prog-lang"><strong>Favourite Programming Language:</strong> <?= htmlspecialchars($m['fav_programming']) ?> <img src="<?=htmlspecialchars($m['icon_source'])?>" alt="python logo" style="width: auto; height: 20px; display: inline;"></li>
+                        </ul>
 
-                    <blockquote>
-                        <p class="tran-quote">" Believe in yourself, and anything is possible "</p>
-                        
-                        <p class="og-quote">" 相信自己，一切皆有可能 "</p>
-                        
-                        <cite>— Jingyee</cite>
-                    </blockquote>
-                </dd>
-
-                <!-- member 2 -->
-                <dt>
-                    <span class="name"><strong>Member 2:</strong> Eaint Wunna Aung (Charlotte)</span>
-
-                    <span class="id">106403058</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Leader &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>jobs.php</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> oversee the project progress and completion status, act as a group representative, give inputs on page design</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Burmese &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;"></li>
-                    </ul>
-
-                    <blockquote>
-                        <p class="tran-quote">" The things happen in a natural course of events "</p>
-                        
-                        <p class="og-quote">" Phit yoe phit sin "</p>
-
-                        <cite>— Charlotte</cite>
-                    </blockquote>
-                </dd>
-
-                <!-- member 3 -->
-                <dt>
-                    <span class="name"><strong>Member 3:</strong> Ye Htet Aung (Louis)</span>
-
-                    <span class="id">106399199</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Editor &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>about.php</code> &plus; <code>styles.css</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> review &amp; edit all files for consistency, formatting, and accessibility, design the external css file</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Burmese, English, &amp; German</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;"></li>
-                    </ul>
-
-                    <blockquote>
-                        <p class="tran-quote">" What you have is what you have "</p>                        
-
-                        <p class="og-quote">" Was man hat, das hat man "</p>
-
-                        <cite>— Louis</cite>
-                    </blockquote>
-                </dd>
-
-                <!-- member 4 -->
-                <dt>
-                    <span class="name"><strong>Member 4:</strong> Amirul Afif (Afif)</span>
-
-                    <span class="id">106201456</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Manager &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>index.php</code> &plus; <code>styles.css</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> monitor the project workflow on Jira, design the external css file</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Bahasa Melayu &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;"></li>
-                    </ul>
-
-                    <blockquote>
-                        <p class="tran-quote">" Stay calm "</p>                        
-
-                        <p class="og-quote">" Kekal tenang "</p>
-
-                        <cite>— Afif</cite>
-                    </blockquote>
-                </dd>
+                        <blockquote>
+                            <p class="tran-quote">" <?= htmlspecialchars($m['quote_translated']) ?> "</p>
+                            
+                            <p class="og-quote">" <?= htmlspecialchars($m['quote_original']) ?> "</p>
+                            
+                            <cite>— <?= htmlspecialchars($m['nickname']) ?></cite>
+                        </blockquote>
+                    </dd>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </dl>
         </section>
 

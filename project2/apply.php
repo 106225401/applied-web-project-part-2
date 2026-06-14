@@ -52,11 +52,15 @@
         <meta name="author" content="Jingyee">
 
         <!-- Tab bar: title and icon -->
-        <title>Job Application</title>
+        <title>Job Application | NextGenDevs</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
+<<<<<<< HEAD
         <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
+=======
+        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+>>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
 
         <!-- Embedded CSS styling -->
         <style>
