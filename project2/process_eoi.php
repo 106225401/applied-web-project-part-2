@@ -70,12 +70,19 @@
         "phone" => "Phone Number"
     ];
 
-    $validation = [
+    $pattern = [
+        "jobref" => "/^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{5}$/",
         "fname" => "/^[A-Za-z ]{1,20}$/",
         "lname" => "/^[A-Za-z ]{1,20}$/",
         "dob" => "/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/[0-9]{4}$/",
         "postcode" => "/^[0-9]{4}$/",
         "phone" => "/^[0-9]{8,12}$/"
+    ];
+
+    $allowed = [
+        "gender" => ["male","female","prefer-not-to-say"],
+        "state" => ["VIC","NSW","QLD","NT","WA","SA","TAS","ACT"],
+        "skill" => ["excel","mysql","python","java","spss","other"]
     ];
 
     $error_msg = [
@@ -88,14 +95,12 @@
         "skill" => "At least one skill must be selected."
     ];
 
-    $_SESSION["form_data"] = $_POST;
-
     $errors = [];
     $user_input = [];
 
     foreach ($fields as $field) {
 
-        $$field = sanitise_input($_POST[$field] ?? "");
+        $$field = mysqli_real_escape_string($conn, sanitise_input($_POST[$field] ?? ""));
         $user_input[$field] = $$field;
 
         if (empty($user_input[$field])) {
@@ -103,9 +108,14 @@
             continue;
         }
 
-        if (isset($validation[$field]) &&
-            !preg_match($validation[$field], $user_input[$field])) {
+        if (isset($pattern[$field]) &&
+            !preg_match($pattern[$field], $user_input[$field])) {
             $errors[$field] = $error_msg[$field];
+        }
+
+        if (isset($allowed[$field]) &&
+            !in_array($user_input[$field], $allowed[$field])) {
+            $errors[$field] = "Invalid $labels[$field] selected.";
         }
 
         if ($field === "email" && !filter_var($user_input["email"], FILTER_VALIDATE_EMAIL)) {
@@ -118,10 +128,26 @@
         $user_input["skill"] = [];
     }
     else {
-        $user_input["skill"] = $_POST["skill"];
+        $skill = $_POST["skill"];
+        $valid = true;
+
+        foreach ($skill as $s) {
+            if (!in_array($s, $allowed["skill"])) {
+                $valid = false;
+                break;
+            }
+        }
+
+        if (!$valid) {
+            $errors["skill"] = "Invalid skill selected.";
+            $user_input["skill"] = [];
+        } else {
+            $user_input["skill"] = $skill;
+        }
     }
-    $skill = implode(", ", array_map("sanitise_input", $_POST["skill"] ?? []));
-    $others = sanitise_input($_POST["others"] ?? "");
+    $skill = mysqli_real_escape_string($conn, implode(", ", array_map("sanitise_input", $user_input["skill"])));
+
+    $others = mysqli_real_escape_string($conn, sanitise_input($_POST["others"] ?? ""));
     $user_input["others"] = $others;
 
     if (!empty($errors)) {
