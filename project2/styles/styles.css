@@ -1125,26 +1125,20 @@ Job Application Page Styling
   outline: none;
 } 
 
-/* Hide it normally */
-.error-text {
+/* Hide empty error messages*/
+.error-msg:empty {
   display: none;
+}
+
+/* Style error messages */
+.error-msg {
+  display: block;
   grid-column: 1 / -1;
   color: #e05c5c;
   font-size: 0.8rem;
   margin-top: 0rem;
   margin-bottom: 0.3rem;
-}
-
-/* Show it ONLY when invalid */
-input:user-invalid + .error-text, select:user-invalid + .error-text, .form-section fieldset fieldset:has(input[type="radio"]:user-invalid) .error-text {
-    display: block;
-    text-align: right;
-}
-
-/* specifically for jobref only */
-#jobref:user-invalid + .error-text {
-    display: block;
-    text-align: left;
+  text-align: right;
 }
 /* 
 The end of Job Application Page styling
