@@ -287,7 +287,7 @@
                 <!-- Form submission and reset buttons -->
                 <div class="two-btn">
                     <button type="submit">Apply</button>
-                    <button type="reset">Reset Form</button>
+                    <a href="apply.php">Reset Form</a>
                 </div>
             </form>
         </main>
