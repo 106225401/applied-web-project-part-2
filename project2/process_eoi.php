@@ -67,7 +67,7 @@
         "state" => "State",
         "postcode" => "Postcode",
         "email" => "Email",
-        "phone" => "Phone"
+        "phone" => "Phone Number"
     ];
 
     $validation = [
@@ -78,7 +78,7 @@
         "phone" => "/^[0-9]{8,12}$/"
     ];
 
-    $invalid_msg = [
+    $error_msg = [
         "fname" => "First name must be max 20 letters only.",
         "lname" => "Last name must be max 20 letters only.",
         "dob" => "Date of birth must be in dd/mm/yyyy format.",
@@ -105,16 +105,16 @@
 
         if (isset($validation[$field]) &&
             !preg_match($validation[$field], $user_input[$field])) {
-            $errors[$field] = $invalid_msg[$field];
+            $errors[$field] = $error_msg[$field];
+        }
+
+        if ($field === "email" && !filter_var($user_input["email"], FILTER_VALIDATE_EMAIL)) {
+            $errors["email"] = $error_msg["email"];
         }
     }
 
-    if (!filter_var($user_input[$email], FILTER_VALIDATE_EMAIL)) {
-        $errors["email"] = $invalid_msg["email"];
-    }
-
     if (empty($_POST["skill"])) {
-        $errors["skill"] = $invalid_msg["skill"];
+        $errors["skill"] = $error_msg["skill"];
         $user_input["skill"] = [];
     }
     else {
