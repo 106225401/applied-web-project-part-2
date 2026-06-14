@@ -8,6 +8,25 @@
 
     unset($_SESSION["errors"]);
     unset($_SESSION["form_data"]);
+
+    function check_form_state($type, $field, $value, $user_input)
+    {
+        if (!isset($user_input[$field])) {
+            return '';
+        }
+
+        if ($type === 'select' && $user_input[$field] === $value) {
+            return 'selected';
+        }
+
+        if ($type === 'radio' && $user_input[$field] === $value) {
+            return 'checked';
+        }
+
+        if ($type === 'checkbox' && in_array($value, $user_input[$field])) {
+                return 'checked';
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -81,11 +100,11 @@
                     <select id="jobref" name="jobref"
                         aria-describedby="job-help">
                         <option value="">-- Please Select --</option>
-                        <option value="dlr01">DLR01</option>
-                        <option value="lms02">LMS02</option>
-                        <option value="res03">RES03</option>
+                        <option value="dlr01" <?php echo check_form_state('select', 'jobref', 'dlr01', $user_input); ?>>DLR01</option>
+                        <option value="lms02" <?php echo check_form_state('select', 'jobref', 'lms02', $user_input); ?>>LMS02</option>
+                        <option value="res03" <?php echo check_form_state('select', 'jobref', 'res03', $user_input); ?>>RES03</option>
                     </select>
-                        
+
                     <span class="error-text">Please enter a valid job reference number (refer to the available positions).</span>
 
                     <div id="job-help" style="color: var(--purple-gray);">
@@ -131,17 +150,20 @@
                             <legend>Gender</legend>
 
                             <div>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Male</label>
+                                <input type="radio" id="male" name="gender" value="male"
+                                    <?php echo check_form_state('radio', 'gender', 'male', $user_input); ?>>
+                                <label for="gender-male">Male</label>
                             </div>
 
                             <div>
-                                <input type="radio" id="female" name="gender" value="female">
+                                <input type="radio" id="female" name="gender" value="female"
+                                    <?php echo check_form_state('radio', 'gender', 'female', $user_input); ?>>
                                 <label for="female">Female</label>
                             </div>
 
                             <div>
-                                <input type="radio" id="prefer-not-to-say" name="gender" value="prefer-not-to-say">
+                                <input type="radio" id="prefer-not-to-say" name="gender" value="prefer-not-to-say"
+                                    <?php echo check_form_state('radio', 'gender', 'prefer-not-to-say', $user_input); ?>>
                                 <label for="prefer-not-to-say">Prefer not to say</label>
                             </div>
 
@@ -171,14 +193,14 @@
                             autocomplete="address-level1"
                             title="Select State">
                             <option value="">-- Please Select --</option>
-                            <option value="VIC">VIC</option>
-                            <option value="NSW">NSW</option>
-                            <option value="QLD">QLD</option>
-                            <option value="NT">NT</option>
-                            <option value="WA">WA</option>
-                            <option value="SA">SA</option>
-                            <option value="TAS">TAS</option>
-                            <option value="ACT">ACT</option>
+                            <option value="VIC" <?php echo check_form_state('select', 'state', 'VIC', $user_input); ?>>VIC</option>
+                            <option value="NSW" <?php echo check_form_state('select', 'state', 'NSW', $user_input); ?>>NSW</option>
+                            <option value="QLD" <?php echo check_form_state('select', 'state', 'QLD', $user_input); ?>>QLD</option>
+                            <option value="NT" <?php echo check_form_state('select', 'state', 'NT', $user_input); ?>>NT</option>
+                            <option value="WA" <?php echo check_form_state('select', 'state', 'WA', $user_input); ?>>WA</option>
+                            <option value="SA" <?php echo check_form_state('select', 'state', 'SA', $user_input); ?>>SA</option>
+                            <option value="TAS" <?php echo check_form_state('select', 'state', 'TAS', $user_input); ?>>TAS</option>
+                            <option value="ACT" <?php echo check_form_state('select', 'state', 'ACT', $user_input); ?>>ACT</option>
                         </select>
                         <span class="error-text">Please select your state.</span>
 
@@ -213,32 +235,38 @@
                         <legend>Skills</legend>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="excel" name="skill[]" value="excel">
+                            <input type="checkbox" id="excel" name="skill[]" value="excel"
+                                <?php echo check_form_state('checkbox', 'skill', 'excel', $user_input); ?>>
                             <label for="excel">Excel</label>
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="mysql" name="skill[]" value="mysql">
+                            <input type="checkbox" id="mysql" name="skill[]" value="mysql"
+                                <?php echo check_form_state('checkbox', 'skill', 'mysql', $user_input); ?>>
                             <label for="mysql">MySQL</label>
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="python" name="skill[]" value="python">
+                            <input type="checkbox" id="python" name="skill[]" value="python"
+                                <?php echo check_form_state('checkbox', 'skill', 'python', $user_input); ?>>
                             <label for="python">Python</label>
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="java" name="skill[]" value="java">
+                            <input type="checkbox" id="java" name="skill[]" value="java"
+                                <?php echo check_form_state('checkbox', 'skill', 'java', $user_input); ?>>
                             <label for="java">Java</label>
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="spss" name="skill[]" value="spss">
+                            <input type="checkbox" id="spss" name="skill[]" value="spss"
+                                <?php echo check_form_state('checkbox', 'skill', 'spss', $user_input); ?>>
                             <label for="spss">SPSS</label>
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="other" name="skill[]" value="other">
+                            <input type="checkbox" id="other" name="skill[]" value="other"
+                                <?php echo check_form_state('checkbox', 'skill', 'other', $user_input); ?>>
                             <label for="other">Other skills…</label>
                         </div>
 
