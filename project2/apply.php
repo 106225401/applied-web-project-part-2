@@ -27,6 +27,11 @@
                 return 'checked';
         }
     }
+
+    function display_error($field, $errors)
+    {
+        echo "<span class='error-msg'>" . ($errors[$field] ?? '') . "</span>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -104,8 +109,7 @@
                         <option value="lms02" <?php echo check_form_state('select', 'jobref', 'lms02', $user_input); ?>>LMS02</option>
                         <option value="res03" <?php echo check_form_state('select', 'jobref', 'res03', $user_input); ?>>RES03</option>
                     </select>
-
-                    <span class="error-text">Please enter a valid job reference number (refer to the available positions).</span>
+                    <?php display_error('jobref', $errors); ?>
 
                     <div id="job-help" style="color: var(--purple-gray);">
                         <a href="jobs.php">Available positions:</a>
@@ -129,14 +133,14 @@
                             value="<?php echo $user_input['fname'] ?? ''; ?>"
                             autocomplete="given-name"
                             title="Format: max 20 alpha characters">
-                        <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
+                        <?php display_error('fname', $errors); ?>
 
                         <label for="lname">Last Name:</label>
                         <input type="text" id="lname" name="lname"
                             value="<?php echo $user_input['lname'] ?? ''; ?>"
                             autocomplete="family-name"
                             title="Format: max 20 alpha characters">
-                        <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
+                        <?php display_error('lname', $errors); ?>
 
                         <label for="dob">Date of Birth:</label>
                         <input type="text" id="dob" name="dob"
@@ -144,7 +148,7 @@
                             autocomplete="bday"
                             placeholder="dd/mm/yyyy"
                             title="Format: dd/mm/yyyy">
-                        <span class="error-text">Please enter your date of birth in DD/MM/YYYY format.</span>
+                        <?php display_error('dob', $errors); ?>
 
                         <fieldset>
                             <legend>Gender</legend>
@@ -167,7 +171,7 @@
                                 <label for="prefer-not-to-say">Prefer not to say</label>
                             </div>
 
-                            <span class="error-text">Please select a gender option.</span>
+                            <?php display_error('gender', $errors); ?>
                         </fieldset>
                     </fieldset>
 
@@ -179,14 +183,14 @@
                             value="<?php echo $user_input['street'] ?? ''; ?>"
                             autocomplete="address-line1"
                             title="Format: max 40 characters">
-                        <span class="error-text">Please enter up to 40 characters only.</span>
+                        <?php display_error('street', $errors); ?>
 
                         <label for="suburb">Suburb/Town</label>
                         <input type="text" id="suburb" name="suburb"
                             value="<?php echo $user_input['suburb'] ?? ''; ?>"
                             autocomplete="address-level2"
                             title="Format: max 40 characters">
-                        <span class="error-text">Please enter up to 40 characters only.</span>
+                        <?php display_error('suburb', $errors); ?>
 
                         <label for="state">State</label>
                         <select id="state" name="state"
@@ -202,28 +206,28 @@
                             <option value="TAS" <?php echo check_form_state('select', 'state', 'TAS', $user_input); ?>>TAS</option>
                             <option value="ACT" <?php echo check_form_state('select', 'state', 'ACT', $user_input); ?>>ACT</option>
                         </select>
-                        <span class="error-text">Please select your state.</span>
+                        <?php display_error('state', $errors); ?>
 
                         <label for="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode"
                             value="<?php echo $user_input['postcode'] ?? ''; ?>"
                             autocomplete="postal-code"
                             title="Format: exactly 4 digits">
-                        <span class="error-text">Please enter exactly 4 digits.</span>
+                        <?php display_error('postcode', $errors); ?>
 
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email"
                             value="<?php echo $user_input['email'] ?? ''; ?>"
                             autocomplete="email"                            
                             title="Format: valid email">
-                        <span class="error-text">Please enter a valid email address.</span>
+                        <?php display_error('email', $errors); ?>
 
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone"
                             value="<?php echo $user_input['phone'] ?? ''; ?>"
                             autocomplete="tel"
                             title="Format: 8-12 digits">
-                        <span class="error-text">Please enter a valid phone number with 8–12 digits.</span>
+                        <?php display_error('phone', $errors); ?>
                     </fieldset>
                 </section>
 
@@ -270,7 +274,7 @@
                             <label for="other">Other skills…</label>
                         </div>
 
-                        <span class="error-text">Please select at least one skill.</span>
+                        <?php display_error('skill', $errors); ?>
 
                         <label for="others">Other Skills</label>
                         <textarea id="others" name="others"
