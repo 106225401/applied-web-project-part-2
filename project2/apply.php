@@ -107,18 +107,21 @@
 
                         <label for="fname">First Name:</label>
                         <input type="text" id="fname" name="fname"
+                            value="<?php echo $user_input['fname'] ?? ''; ?>"
                             autocomplete="given-name"
                             title="Format: max 20 alpha characters">
                         <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
 
                         <label for="lname">Last Name:</label>
                         <input type="text" id="lname" name="lname"
+                            value="<?php echo $user_input['lname'] ?? ''; ?>"
                             autocomplete="family-name"
                             title="Format: max 20 alpha characters">
                         <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
 
                         <label for="dob">Date of Birth:</label>
                         <input type="text" id="dob" name="dob"
+                            value="<?php echo $user_input['dob'] ?? ''; ?>"
                             autocomplete="bday"
                             placeholder="dd/mm/yyyy"
                             title="Format: dd/mm/yyyy">
@@ -151,12 +154,14 @@
 
                         <label for="street">Street Address</label>
                         <input type="text" id="street" name="street"
+                            value="<?php echo $user_input['street'] ?? ''; ?>"
                             autocomplete="address-line1"
                             title="Format: max 40 characters">
                         <span class="error-text">Please enter up to 40 characters only.</span>
 
                         <label for="suburb">Suburb/Town</label>
                         <input type="text" id="suburb" name="suburb"
+                            value="<?php echo $user_input['suburb'] ?? ''; ?>"
                             autocomplete="address-level2"
                             title="Format: max 40 characters">
                         <span class="error-text">Please enter up to 40 characters only.</span>
@@ -179,18 +184,21 @@
 
                         <label for="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode"
+                            value="<?php echo $user_input['postcode'] ?? ''; ?>"
                             autocomplete="postal-code"
                             title="Format: exactly 4 digits">
                         <span class="error-text">Please enter exactly 4 digits.</span>
 
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email"
+                            value="<?php echo $user_input['email'] ?? ''; ?>"
                             autocomplete="email"                            
                             title="Format: valid email">
                         <span class="error-text">Please enter a valid email address.</span>
 
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone"
+                            value="<?php echo $user_input['phone'] ?? ''; ?>"
                             autocomplete="tel"
                             title="Format: 8-12 digits">
                         <span class="error-text">Please enter a valid phone number with 8–12 digits.</span>
@@ -239,7 +247,8 @@
                         <label for="others">Other Skills</label>
                         <textarea id="others" name="others"
                             placeholder="Write your other skills here..."
-                            rows="5" cols="50"></textarea>
+                            rows="5" cols="50"
+                            ><?php echo $user_input['others'] ?? ''; ?></textarea>
                     </fieldset>
                 </section>
 
