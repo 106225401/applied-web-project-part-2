@@ -100,8 +100,7 @@
 
     foreach ($fields as $field) {
 
-        $$field = mysqli_real_escape_string($conn, sanitise_input($_POST[$field] ?? ""));
-        $user_input[$field] = $$field;
+        $user_input[$field] = sanitise_input($_POST[$field] ?? "");
 
         if (empty($user_input[$field])) {
             $errors[$field] = "$labels[$field] is required.";
@@ -142,13 +141,11 @@
             $errors["skill"] = "Invalid skill selected.";
             $user_input["skill"] = [];
         } else {
-            $user_input["skill"] = $skill;
+            $user_input["skill"] = array_map("sanitise_input", $skill);
         }
     }
-    $skill = mysqli_real_escape_string($conn, implode(", ", array_map("sanitise_input", $user_input["skill"])));
 
-    $others = mysqli_real_escape_string($conn, sanitise_input($_POST["others"] ?? ""));
-    $user_input["others"] = $others;
+    $user_input["others"] = sanitise_input($_POST["others"] ?? "");
 
     if (!empty($errors)) {
         $_SESSION["errors"] = $errors;
@@ -158,6 +155,14 @@
 
         header("Location: apply.php");
         exit();
+    }
+
+    foreach ($user_input as $field => $value) {
+        if ($field === "skill") {
+            $value = implode(", ", $value);
+        }
+
+        $$field = mysqli_real_escape_string($conn, $value);
     }
 
     $sql = "
