@@ -251,12 +251,13 @@ a:focus .sr-only {
 }
 
 /* Global buttons */
-.apply-now, .two-btn button[type="submit"], .two-btn button[type="reset"] {
+.apply-now, .two-btn button, .two-btn a {
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
   font-weight: 700;
   font-family: var(--font);
+  font-size: inherit;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.9rem 3.2rem;
@@ -269,7 +270,7 @@ a:focus .sr-only {
               transform       0.15s ease;
 }
  
-.apply-now:hover, .apply-now:focus, .two-btn button[type="submit"]:hover, .two-btn button[type="reset"]:hover, .two-btn button[type="submit"]:focus, .two-btn button[type="reset"]:focus {
+.apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, .two-btn button:focus, .two-btn a:focus {
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);
