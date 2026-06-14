@@ -76,8 +76,7 @@
 
                     <label for="jobref">Job Reference Number:</label>
                     <select id="jobref" name="jobref"
-                        aria-describedby="job-help"
-                        required>
+                        aria-describedby="job-help">
                         <option value="">-- Please Select --</option>
                         <option value="dlr01">DLR01</option>
                         <option value="lms02">LMS02</option>
@@ -106,33 +105,27 @@
                         <label for="fname">First Name:</label>
                         <input type="text" id="fname" name="fname"
                             autocomplete="given-name"
-                            pattern="[A-Za-z ]{1,20}" maxlength="20"
-                            title="Format: max 20 alpha characters"
-                            required>
+                            title="Format: max 20 alpha characters">
                         <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
 
                         <label for="lname">Last Name:</label>
                         <input type="text" id="lname" name="lname"
                             autocomplete="family-name"
-                            pattern="[A-Za-z ]{1,20}" maxlength="20"
-                            title="Format: max 20 alpha characters"
-                            required>
+                            title="Format: max 20 alpha characters">
                         <span class="error-text">Please enter up to 20 letters only (no numbers or symbols).</span>
 
                         <label for="dob">Date of Birth:</label>
                         <input type="text" id="dob" name="dob"
                             autocomplete="bday"
                             placeholder="dd/mm/yyyy"
-                            pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}"
-                            title="Format: dd/mm/yyyy"
-                            required>
+                            title="Format: dd/mm/yyyy">
                         <span class="error-text">Please enter your date of birth in DD/MM/YYYY format.</span>
 
                         <fieldset>
                             <legend>Gender</legend>
 
                             <div>
-                                <input type="radio" id="male" name="gender" value="male" required>
+                                <input type="radio" id="male" name="gender" value="male">
                                 <label for="male">Male</label>
                             </div>
 
@@ -156,24 +149,19 @@
                         <label for="street">Street Address</label>
                         <input type="text" id="street" name="street"
                             autocomplete="address-line1"
-                            maxlength="40"
-                            title="Format: max 40 characters"
-                            required>
+                            title="Format: max 40 characters">
                         <span class="error-text">Please enter up to 40 characters only.</span>
 
                         <label for="suburb">Suburb/Town</label>
                         <input type="text" id="suburb" name="suburb"
                             autocomplete="address-level2"
-                            maxlength="40"
-                            title="Format: max 40 characters"
-                            required>
+                            title="Format: max 40 characters">
                         <span class="error-text">Please enter up to 40 characters only.</span>
 
                         <label for="state">State</label>
                         <select id="state" name="state"
                             autocomplete="address-level1"
-                            title="Select State"
-                            required>
+                            title="Select State">
                             <option value="">-- Please Select --</option>
                             <option value="VIC">VIC</option>
                             <option value="NSW">NSW</option>
@@ -189,24 +177,19 @@
                         <label for="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode"
                             autocomplete="postal-code"
-                            pattern="[0-9]{4}"
-                            title="Format: exactly 4 digits"
-                            required>
+                            title="Format: exactly 4 digits">
                         <span class="error-text">Please enter exactly 4 digits.</span>
 
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email"
+                        <input type="text" id="email" name="email"
                             autocomplete="email"                            
-                            title="Format: valid email"
-                            required>
+                            title="Format: valid email">
                         <span class="error-text">Please enter a valid email address.</span>
 
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone"
                             autocomplete="tel"
-                            pattern="[0-9]{8,12}"
-                            title="Format: 8-12 digits"
-                            required>
+                            title="Format: 8-12 digits">
                         <span class="error-text">Please enter a valid phone number with 8–12 digits.</span>
                     </fieldset>
                 </section>
@@ -244,7 +227,7 @@
                         </div>
 
                         <div class="skill-item">
-                            <input type="checkbox" id="other" name="skill[]" value="other" required>
+                            <input type="checkbox" id="other" name="skill[]" value="other">
                             <label for="other">Other skills…</label>
                         </div>
 
