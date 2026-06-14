@@ -5,6 +5,9 @@
 
     $errors = $_SESSION["errors"] ?? [];
     $user_input = $_SESSION["form_data"] ?? [];
+
+    unset($_SESSION["errors"]);
+    unset($_SESSION["form_data"]);
 ?>
 
 <!DOCTYPE html>
