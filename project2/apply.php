@@ -10,11 +10,11 @@
         <meta name="author" content="Jingyee">
 
         <!-- Tab bar: title and icon -->
-        <title>Job Application</title>
+        <title>Job Application | NextGenDevs</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
         <!-- Embedded CSS styling -->
         <style>

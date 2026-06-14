@@ -8,10 +8,10 @@
         <meta name="keywords" content="university jobs, job application, IT careers, digital learning, innovation, research">
         <meta name="author" content="Jingyee">
 
-        <title>Available Job Positions</title>
+        <title>Available Job Positions | NextGenDevs</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
         <!-- Embedded CSS for UI Styling -->
         <style>
