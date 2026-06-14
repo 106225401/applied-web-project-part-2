@@ -75,10 +75,15 @@
                     <h2 id="job-title">Position to Apply For</h2>
 
                     <label for="jobref">Job Reference Number:</label>
-                    <input type="text" id="jobref" name="jobref"
-                        pattern="^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{5}$"
+                    <select id="jobref" name="jobref"
                         aria-describedby="job-help"
                         required>
+                        <option value="">-- Please Select --</option>
+                        <option value="dlr01">DLR01</option>
+                        <option value="lms02">LMS02</option>
+                        <option value="res03">RES03</option>
+                    </select>
+                        
                     <span class="error-text">Please enter a valid job reference number (refer to the available positions).</span>
 
                     <div id="job-help" style="color: var(--purple-gray);">
