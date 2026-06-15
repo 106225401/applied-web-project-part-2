@@ -162,45 +162,49 @@
             $value = implode(", ", $value);
         }
 
-        $$field = mysqli_real_escape_string($conn, $value);
+        $$field = $value;
     }
 
-    $sql = "
-    INSERT INTO eoi
-    (
-        jobref,
-        fname,
-        lname,
-        dob,
-        gender,
-        street,
-        suburb,
-        state,
-        postcode,
-        email,
-        phone,
-        skill,
-        others
-    )
-    VALUES
-    (
-        '$jobref',
-        '$fname',
-        '$lname',
-        '$dob',
-        '$gender',
-        '$street',
-        '$suburb',
-        '$state',
-        '$postcode',
-        '$email',
-        '$phone',
-        '$skill',
-        '$others'
-    )
-    ";
+    $stmt = mysqli_prepare(
+        $conn,
+        "INSERT INTO eoi
+        (
+            jobref,
+            fname,
+            lname,
+            dob,
+            gender,
+            street,
+            suburb,
+            state,
+            postcode,
+            email,
+            phone,
+            skill,
+            others
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    );
 
-    $result = mysqli_query($conn, $sql);
+    mysqli_stmt_bind_param(
+        $stmt,
+        "sssssssssssss",
+        $jobref,
+        $fname,
+        $lname,
+        $dob,
+        $gender,
+        $street,
+        $suburb,
+        $state,
+        $postcode,
+        $email,
+        $phone,
+        $skill,
+        $others
+    );
+
+    $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
         $eoi_number = mysqli_insert_id($conn);
@@ -213,6 +217,8 @@
     else {
         echo "Database error: " . mysqli_error($conn);
     }
+
+    mysqli_stmt_close($stmt);
 
     mysqli_close($conn);
 ?>
