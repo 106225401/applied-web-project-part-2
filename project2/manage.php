@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $action_message = "Please enter a job reference to delete.";
             $action_type    = "error";
         } else {
-            $stmt = $conn->prepare("DELETE FROM eoi WHERE job_ref = ?");
+            $stmt = $conn->prepare("DELETE FROM eoi WHERE jobref = ?");
             $stmt->bind_param("s", $jobref);
             $stmt->execute();
             $rows = mysqli_stmt_affected_rows($stmt);
@@ -72,7 +72,7 @@ $sort_dir         = ($_GET['sort_dir'] ?? 'ASC') == 'DESC' ? 'DESC' : 'ASC';
 
 // Whitelist sortable columns to prevent SQL injection
 $allowed_sort = [
-    'EOInumber','job_ref','first_name','last_name',
+    'EOInumber','jobref','fname','lname',
     'dob','gender','email','status'
 ];
 
@@ -86,17 +86,17 @@ $bind_types   = '';
 $bind_values  = [];
 
 if ($filter_jobref !== '') {
-    $where_parts[] = "job_ref = ?";
+    $where_parts[] = "jobref = ?";
     $bind_types   .= 's';
     $bind_values[] = $filter_jobref;
 }
 if ($filter_firstname !== '') {
-    $where_parts[] = "first_name LIKE ?";
+    $where_parts[] = "fname LIKE ?";
     $bind_types   .= 's';
     $bind_values[] = '%' . $filter_firstname . '%';
 }
 if ($filter_lastname !== '') {
-    $where_parts[] = "last_name LIKE ?";
+    $where_parts[] = "lname LIKE ?";
     $bind_types   .= 's';
     $bind_values[] = '%' . $filter_lastname . '%';
 }
@@ -210,12 +210,12 @@ mysqli_close($conn);
                             <?php
                             $sort_options = [
                                 'EOInumber'     => 'EOI Number',
-                                'job_ref' => 'Job Reference',
-                                'first_name'    => 'First Name',
-                                'last_name'     => 'Last Name',
+                                'jobref' => 'Job Reference',
+                                'fname'    => 'First Name',
+                                'lname'     => 'Last Name',
                                 'dob' => 'Date of Birth',
-                                'gender'        => 'Gender',
-                                'email'         => 'Email',
+                                'gender'        => 'gender',
+                                'email'         => 'email',
                                 'status'        => 'Status',
                             ];
                             foreach ($sort_options as $val => $label):
@@ -322,7 +322,8 @@ mysqli_close($conn);
                     <th>Postcode</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Skills</th>
+                    <th>Skill</th>
+                    <th>Others</th>
                     <th>Status</th>
                     <th>Update Status</th>
                 </tr>
@@ -350,9 +351,9 @@ mysqli_close($conn);
                 ?>
                 <tr>
                     <td><?= htmlspecialchars($eoi['EOInumber']) ?></td>
-                    <td><?= htmlspecialchars($eoi['job_ref']) ?></td>
-                    <td><?= htmlspecialchars($eoi['first_name']) ?></td>
-                    <td><?= htmlspecialchars($eoi['last_name']) ?></td>
+                    <td><?= htmlspecialchars($eoi['jobref']) ?></td>
+                    <td><?= htmlspecialchars($eoi['fname']) ?></td>
+                    <td><?= htmlspecialchars($eoi['lname']) ?></td>
                     <td><?= htmlspecialchars($eoi['dob'] ?? '') ?></td>
                     <td><?= htmlspecialchars($eoi['gender'] ?? '') ?></td>
                     <td><?= htmlspecialchars($eoi['street'] ?? '') ?></td>
@@ -361,7 +362,8 @@ mysqli_close($conn);
                     <td><?= htmlspecialchars($eoi['postcode'] ?? '') ?></td>
                     <td><?= htmlspecialchars($eoi['phone'] ?? '') ?></td>
                     <td><?= htmlspecialchars($eoi['email']) ?></td>
-                    <td><?= htmlspecialchars($eoi['skills']) ?></td>
+                    <td><?= htmlspecialchars($eoi['skill']) ?></td>
+                    <td><?= htmlspecialchars($eoi['others']) ?></td>
                     <td><span class="badge <?= $badge_class ?>"><?= htmlspecialchars($status) ?></span></td>
                     <td>
                         <!-- Inline quick-change status form per row -->

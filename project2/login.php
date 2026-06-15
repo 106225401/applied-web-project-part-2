@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
         if (!$conn) {
-            $error_message = "Database connection failed. Please try again later.";
+            die("Connection failed: " . mysqli_connect_error());
         } else {
             // using prepared statements
             $stmt = $conn->prepare("SELECT * FROM admin_login WHERE username = ?");

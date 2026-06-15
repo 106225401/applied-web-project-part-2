@@ -265,12 +265,13 @@ a:focus .sr-only {
 }
 
 /* Global buttons */
-.apply-now, .two-btn button[type="submit"], .two-btn button[type="reset"], .submit-btn, .btn-logout {
+.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout {
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
   font-weight: 700;
   font-family: var(--font);
+  font-size: inherit;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.9rem 3.2rem;
@@ -283,7 +284,8 @@ a:focus .sr-only {
               transform       0.15s ease;
 }
  
-.apply-now:hover, .apply-now:focus, .two-btn button[type="submit"]:hover, .two-btn button[type="reset"]:hover, .two-btn button[type="submit"]:focus, .two-btn button[type="reset"]:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
+.apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
+.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);
@@ -1139,26 +1141,20 @@ Job Application Page Styling
   outline: none;
 } 
 
-/* Hide it normally */
-.error-text {
+/* Hide empty error messages*/
+.error-msg:empty {
   display: none;
+}
+
+/* Style error messages */
+.error-msg {
+  display: block;
   grid-column: 1 / -1;
   color: #e05c5c;
   font-size: 0.8rem;
   margin-top: 0rem;
   margin-bottom: 0.3rem;
-}
-
-/* Show it ONLY when invalid */
-input:user-invalid + .error-text, select:user-invalid + .error-text, .form-section fieldset fieldset:has(input[type="radio"]:user-invalid) .error-text {
-    display: block;
-    text-align: right;
-}
-
-/* specifically for jobref only */
-#jobref:user-invalid + .error-text {
-    display: block;
-    text-align: left;
+  text-align: right;
 }
 /* 
 The end of Job Application Page styling
