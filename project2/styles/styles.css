@@ -266,10 +266,14 @@ a:focus .sr-only {
 
 /* Global buttons */
 <<<<<<< HEAD
+<<<<<<< HEAD
 .apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a {
 =======
 .apply-now, .two-btn button[type="submit"], .two-btn button[type="reset"], .submit-btn, .btn-logout {
 >>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
+=======
+.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout {
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
@@ -289,11 +293,16 @@ a:focus .sr-only {
 }
  
 <<<<<<< HEAD
+<<<<<<< HEAD
 .apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
 .two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .return-link a:hover {
 =======
 .apply-now:hover, .apply-now:focus, .two-btn button[type="submit"]:hover, .two-btn button[type="reset"]:hover, .two-btn button[type="submit"]:focus, .two-btn button[type="reset"]:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
 >>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
+=======
+.apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
+.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);

@@ -1,6 +1,7 @@
 <!--Job Application Page-->
 
 <?php
+<<<<<<< HEAD
     // Start session to retrieve validation errors and previously submitted form data
     session_start();
 
@@ -13,29 +14,51 @@
     unset($_SESSION["form_data"]);
 
     // Function to retain selected values after form submission failure (select, radio, checkbox)
+=======
+    session_start();
+
+    $errors = $_SESSION["errors"] ?? [];
+    $user_input = $_SESSION["form_data"] ?? [];
+
+    unset($_SESSION["errors"]);
+    unset($_SESSION["form_data"]);
+
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
     function check_form_state($type, $field, $value, $user_input)
     {
         if (!isset($user_input[$field])) {
             return '';
         }
 
+<<<<<<< HEAD
         // Dropdown selection
+=======
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
         if ($type === 'select' && $user_input[$field] === $value) {
             return 'selected';
         }
 
+<<<<<<< HEAD
         // Radio button selection
+=======
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
         if ($type === 'radio' && $user_input[$field] === $value) {
             return 'checked';
         }
 
+<<<<<<< HEAD
         // Checkbox selections (array-based input)
+=======
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
         if ($type === 'checkbox' && in_array($value, $user_input[$field])) {
                 return 'checked';
         }
     }
 
+<<<<<<< HEAD
     // Function to display validation error messages for each field
+=======
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
     function display_error($field, $errors)
     {
         echo "<span class='error-msg'>" . ($errors[$field] ?? '') . "</span>";
@@ -52,15 +75,19 @@
         <meta name="author" content="Jingyee">
 
         <!-- Tab bar: title and icon -->
-        <title>Job Application | NextGenDevs</title>
+        <title>Job Application</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
+<<<<<<< HEAD
 <<<<<<< HEAD
         <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 =======
         <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 >>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
+=======
+        <link rel="stylesheet" href="styles/styles.css">
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
 
         <!-- Embedded CSS styling -->
         <style>
@@ -168,7 +195,11 @@
                             <div>
                                 <input type="radio" id="male" name="gender" value="male"
                                     <?php echo check_form_state('radio', 'gender', 'male', $user_input); ?>>
+<<<<<<< HEAD
                                 <label for="male">Male</label>
+=======
+                                <label for="gender-male">Male</label>
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
                             </div>
 
                             <div>
@@ -299,7 +330,10 @@
                 <!-- Form submission and reset buttons -->
                 <div class="two-btn">
                     <button type="submit">Apply</button>
+<<<<<<< HEAD
                     <!-- Reset form by reloading page without session data -->
+=======
+>>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
                     <a href="apply.php">Reset Form</a>
                 </div>
             </form>
