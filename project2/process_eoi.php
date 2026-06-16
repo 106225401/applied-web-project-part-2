@@ -204,10 +204,14 @@
 
     if ($result) {
         $eoi_number = mysqli_insert_id($conn);
+        
+        echo '<html lang="en">';
+        echo '<title>Application Submission Success | NextGenDevs</title>';
+        echo '<link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">';
 
-        echo "<h1>Application Submitted Successfully</h1>";
-        echo "<p>Your EOI Number is: $eoi_number</p>";
-        echo "<p><a href='index.php'>Return Home</a></p>";
+        echo "<h1 class='success-header'>Application Submitted Successfully</h1>";
+        echo "<p class='eoi-no'>Your EOI Number is: $eoi_number</p>";
+        echo "<p class='return-link'><a href='index.php'>Return Home</a></p>";
     }
 
     else {

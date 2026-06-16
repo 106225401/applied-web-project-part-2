@@ -24,7 +24,7 @@
         }
 
         if ($type === 'checkbox' && in_array($value, $user_input[$field])) {
-                return 'checked';
+            return 'checked';
         }
     }
 

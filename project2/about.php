@@ -40,15 +40,7 @@ if (!$conn) {
 
     <!-- Embedded CSS for UI Styling -->
     <style>
-        code {
-            font-size: 1em;
-            background-color: var(--purple-light);
-            padding: 0.3em 0.3em;
-            border-radius: 5px;
-            color: var(--purple-inkk);
-        }
-
-        .progLang img {
+        .prog-lang img {
             display: inline;
             vertical-align: middle;
             margin-left: 1px;
