@@ -1778,10 +1778,14 @@ Start of manage page styling
     text-align: left;
     font-weight: 600;
 <<<<<<< HEAD
+<<<<<<< HEAD
     color: var(--purple-deeper);
 =======
     color: var(--muted);
 >>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
+=======
+    color: var(--purple-deeper);
+>>>>>>> 6758f1b (Modified styling of php files to resolve WAVE errors)
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;

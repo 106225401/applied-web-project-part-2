@@ -143,7 +143,7 @@ if (!$conn) {
                             <li class="indiv-contrib"><strong>Project Part 1 Responsibility: </strong><?= htmlspecialchars($m['project_part1']) ?></li>
                             <li class="share-contrib"><strong>Project Part 2 Responsibility:</strong><?= htmlspecialchars($m['project_part2']) ?></li>
                             <li class="speak-lang"><strong>Languages:</strong> <?= htmlspecialchars($m['languages']) ?></li>
-                            <li class="prog-lang"><strong>Favourite Programming Language:</strong> <?= htmlspecialchars($m['fav_programming']) ?> <img src="<?=htmlspecialchars($m['icon_source'])?>" alt="python logo" style="width: auto; height: 20px; display: inline;"></li>
+                            <li class="prog-lang"><strong>Favourite Programming Language:</strong> <?= htmlspecialchars($m['fav_programming']) ?> <img src="<?=htmlspecialchars($m['icon_source'])?>" alt="<?=htmlspecialchars($m['icon_source'])?> logo" style="width: auto; height: 20px; display: inline;"></li>
                         </ul>
 
                         <blockquote>
@@ -175,12 +175,12 @@ if (!$conn) {
                 </figure>
 
                 <figure class="pic2">
-                    <label for="img3"><img src="images/gpic2.jpeg" alt="Our team members selfie at Bingxue - free style picture 1" loading="lazy"></label>
+                    <label for="img3"><img src="images/gpic2.jpeg" alt="Our team members selfie at Bingxue - free style picture 2" loading="lazy"></label>
                     <figcaption>2/3 - Meeting at Bingxue; Selfie 2 <p>From top left to right: Afif and Louis.</p> <p>From bottom left to right: Charlotte and Jingyee</p></figcaption>
                 </figure>
 
                 <figure class="pic3">
-                    <label for="img1"><img src="images/gpic3.jpeg" alt="Our team members selfie at Bingxue - free style picture 1" loading="lazy"></label>
+                    <label for="img1"><img src="images/gpic3.jpeg" alt="Our team members selfie at Bingxue - free style picture 3" loading="lazy"></label>
                     <figcaption>3/3 - Meeting at Bingxue; Selfie 3 <p>From top left to right: Afif and Louis.</p> <p>From bottom left to right: Charlotte and Jingyee</p></figcaption>
                 </figure>
             </div>
