@@ -83,11 +83,16 @@ if($dbconn){
         <div class="available-jobs">
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             <section id="digital">   
                 <!-- CHANGES -->
 =======
             <section id="digital" class="job">   <!-- CHANGES -->
 >>>>>>> 779c97b (Modified footer.inc, process_eoi.php, styles.css)
+=======
+            <section id="digital">   
+                <!-- CHANGES -->
+>>>>>>> 9e39543 (Modified jobs.php to correct the css styling errors by removing unnecessary class in section tag)
                 <?php foreach ($jobs as $job): ?>
             <section id="<?php echo htmlspecialchars($job['anchor_slug']); ?>" class="job">
                 <h2><?php echo htmlspecialchars($job['title']); ?></h2>
