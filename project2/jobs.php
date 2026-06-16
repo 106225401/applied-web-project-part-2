@@ -48,7 +48,7 @@ if($dbconn){
 <body>
     <?php include 'header.inc';?>
 
-    <main id="jobs-main">
+    <main id="main">
         <h1 class="jobs-heading">Available Job Positions</h1>        
         <div class="short-keys">
             <nav aria-label="Job Position Description Anchor Links">
