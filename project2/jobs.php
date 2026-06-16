@@ -82,7 +82,8 @@ if($dbconn){
 
         <div class="available-jobs">
             
-            <section id="digital" class="job">   <!-- CHANGES -->
+            <section id="digital">   
+                <!-- CHANGES -->
                 <?php foreach ($jobs as $job): ?>
             <section id="<?php echo htmlspecialchars($job['anchor_slug']); ?>" class="job">
                 <h2><?php echo htmlspecialchars($job['title']); ?></h2>
