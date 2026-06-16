@@ -156,7 +156,7 @@
                             <div>
                                 <input type="radio" id="male" name="gender" value="male"
                                     <?php echo check_form_state('radio', 'gender', 'male', $user_input); ?>>
-                                <label for="gender-male">Male</label>
+                                <label for="male">Male</label>
                             </div>
 
                             <div>
