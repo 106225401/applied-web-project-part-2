@@ -89,7 +89,7 @@
             <nav class="short-keys" aria-label="Job application form sections">
                 <ul>
                     <li><a href="#job">Job</a></li>
-                    <li><a href="#applicant-details">Details</a></li>
+                    <li><a href="#applicant-details">Applicant Details</a></li>
                     <li><a href="#skills">Skills</a></li>
                 </ul>
             </nav>
