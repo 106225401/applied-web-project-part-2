@@ -464,6 +464,10 @@ main > section:not(:first-child) {
   color: var(--purple-ink);
 }
 
+.group-details-inner-content li:not(:first-child) {
+  margin-bottom: 0.8rem;
+}
+
 /* Members & contributions */
 .contribution dl {
   margin-top: 1.2rem;

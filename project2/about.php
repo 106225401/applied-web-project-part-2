@@ -85,19 +85,46 @@ if (!$conn) {
                 <li>
                     <strong>Course Schedule: </strong> 
                     <ul>
-                        <li>COS20007</li>
+                        <li>COS20007 | Web Development Course</li>
+                        <li>Monday: <em>Lecture</em>
+                            <ul class="group-details-inner-content">
+                                <li>12:00 - 2:00 p.m.</li>
+                                <li>Block G, Level 3, R3.1</li>
+                            </ul>
+                        </li>
 
                         <li>Tuesday: <em>Lecture</em>
-                            <ul>
+                            <ul class="group-details-inner-content">
                                 <li>2:00 - 4:00 p.m.</li>
                                 <li>Block A, Level 8, LH4</li>
                             </ul>
                         </li>
 
                         <li>Wednesday: <em>Lab</em>
-                            <ul>
+                            <ul class="group-details-inner-content">
                                 <li>8:00 - 10:00 a.m.</li>
-                                <li>Block A, Level 3, CSC2</li>
+                                <li>Block A, Level 3, CSC02</li>
+                            </ul>
+                        </li>
+
+                        <li>Thursday: <em>Tutorial</em>
+                            <ul class="group-details-inner-content">
+                                <li>10:00 - 12:00 p.m.</li>
+                                <li>Block C, Level 2, R201</li>
+                            </ul>
+                        </li>
+
+                        <li>Friday: <em>Tutorial</em>
+                            <ul class="group-details-inner-content">
+                                <li>4:00 - 6:00 p.m.</li>
+                                <li>Block C, Level 2, R202</li>
+                            </ul>
+                        </li>
+
+                        <li>Weekends: <em>Self-learning</em>
+                            <ul class="group-details-inner-content">
+                                <li>Available from 10:00 a.m. until 4 p.m.</li>
+                                <li>Online</li>
                             </ul>
                         </li>
                     </ul>
