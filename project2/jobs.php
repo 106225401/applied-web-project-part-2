@@ -28,7 +28,7 @@ if($dbconn){
         <meta name="keywords" content="university jobs, job application, IT careers, digital learning, innovation, research">
         <meta name="author" content="Charlotte">
 
-        <title>Available Job Positions | NextGenDevs</title>
+        <title>Available Job Positions</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
@@ -82,8 +82,12 @@ if($dbconn){
 
         <div class="available-jobs">
             
+<<<<<<< HEAD
             <section id="digital">   
                 <!-- CHANGES -->
+=======
+            <section id="digital" class="job">   <!-- CHANGES -->
+>>>>>>> 779c97b (Modified footer.inc, process_eoi.php, styles.css)
                 <?php foreach ($jobs as $job): ?>
             <section id="<?php echo htmlspecialchars($job['anchor_slug']); ?>" class="job">
                 <h2><?php echo htmlspecialchars($job['title']); ?></h2>

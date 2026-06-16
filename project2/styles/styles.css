@@ -1903,6 +1903,33 @@ End of Successful Application sent
 =======
 >>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
 
+/* 
+Start of Successful Application sent
+*/
+.success-header, .eoi-no, .return-link {
+  text-align: center;
+  background-color: #2E2640;
+  margin: 0 150px 0 150px;
+}
+.success-header {
+  margin-top: 50px;
+  border-radius: 10px 10px 0 0;
+  overflow-wrap: break-word;
+  color: #F5F0E8 ;
+}
+.eoi-no {
+  color: #F5F0E8 ;
+  padding: 10px 0 20px 0;
+  font-size: 20px;
+}
+.return-link {
+  border-radius: 0 0 10px 10px;
+  color: #F5F0E8 ;
+}
+/* 
+End of Successful Application sent
+*/
+
 /* media query for jobs.html making aside responsive */
 @media (max-width: 700px) {
   .job-aside {

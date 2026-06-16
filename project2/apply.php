@@ -51,7 +51,7 @@
 =======
 >>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
         if ($type === 'checkbox' && in_array($value, $user_input[$field])) {
-                return 'checked';
+            return 'checked';
         }
     }
 

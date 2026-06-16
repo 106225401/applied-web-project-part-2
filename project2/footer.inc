@@ -35,6 +35,13 @@
     <section class="footer-section" aria-labelledby="contact-us-title">
         <h3 id="contact-us-title">Contact Us</h3>
         <p>Email: <a href="mailto:info@nextgen.com" >info@nextgen.com</a></p>
+        <p>Follow Us!</p>
+        <span>
+            <a href="https://wa.me/60142597095" target="_blank"><img src="images/whatsapp.png" alt="WhatsApp Icon"></a> 
+            <a href="https://www.facebook.com/people/Next-Generation-Developers/61590674170023/" target="_blank"><img src="images/facebook.png" alt="Facebook Icon"></a> 
+            <a href="" target="_blank"><img src="images/instagram.png" alt="Instagram Icon"></a> 
+            <a href="" target="_blank"><img src="images/linkedin.png" alt="LinkedIn Icon"></a>
+        </span>
     </section>
 
     <!-- Copyright-->
