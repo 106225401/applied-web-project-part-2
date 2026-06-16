@@ -265,7 +265,7 @@ a:focus .sr-only {
 }
 
 /* Global buttons */
-.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout {
+.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a {
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
@@ -285,7 +285,7 @@ a:focus .sr-only {
 }
  
 .apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
-.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
+.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .return-link a:hover {
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);
@@ -1849,20 +1849,27 @@ Start of Successful Application sent
   background-color: #2E2640;
   margin: 0 150px 0 150px;
 }
+
 .success-header {
   margin-top: 50px;
   border-radius: 10px 10px 0 0;
   overflow-wrap: break-word;
   color: #F5F0E8 ;
 }
+
 .eoi-no {
   color: #F5F0E8 ;
   padding: 10px 0 20px 0;
   font-size: 20px;
 }
+
 .return-link {
   border-radius: 0 0 10px 10px;
   color: #F5F0E8 ;
+}
+
+.return-link a {
+  margin-bottom: 20px;
 }
 /* 
 End of Successful Application sent

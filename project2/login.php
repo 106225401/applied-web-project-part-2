@@ -86,9 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php endif; ?>
 
                     <div class="input-group">
+                        <label for="username">Username</label>
                         <input
                             type="text"
                             name="username"
+                            id="username"
                             placeholder="Username"
                             value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
                             autocomplete="username"
@@ -96,9 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
                     <div class="input-group">
+                        <label for="password">Password</label>
                         <input
                             type="password"
                             name="password"
+                            id="password"
                             placeholder="Password"
                             autocomplete="current-password"
                         >
