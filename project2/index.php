@@ -24,7 +24,7 @@
 <body>
     <?php include 'header.inc';?>
 
-    <main id="main-content" class="content-wrapper">       
+    <main id="main" class="content-wrapper">       
         <!-- Group Details: logo, name, slogan, description, image -->
         <section aria-label="Company introduction">
             <div class="intro-box">
