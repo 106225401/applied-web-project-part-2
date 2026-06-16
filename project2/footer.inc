@@ -39,8 +39,8 @@
         <span>
             <a href="https://wa.me/60142597095" target="_blank"><img src="images/whatsapp.png" alt="WhatsApp Icon"></a> 
             <a href="https://www.facebook.com/people/Next-Generation-Developers/61590674170023/" target="_blank"><img src="images/facebook.png" alt="Facebook Icon"></a> 
-            <a href="" target="_blank"><img src="images/instagram.png" alt="Instagram Icon"></a> 
-            <a href="" target="_blank"><img src="images/linkedin.png" alt="LinkedIn Icon"></a>
+            <a href="https://www.instagram.com/next.gendevs/" target="_blank"><img src="images/instagram.png" alt="Instagram Icon"></a> 
+            <a href="https://www.youtube.com/@NextGenDevs-r4o" target="_blank"><img src="images/youtube.png" alt="YouTube Icon"></a>
         </span>
     </section>
 
