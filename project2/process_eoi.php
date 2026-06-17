@@ -1,19 +1,23 @@
 <?php
     session_start();
 
+    // Load database configuration
     require_once("settings.php");
 
+    // Ensure page is accessed via POST only
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         header("Location: apply.php");
         exit();
     }
 
+    // Establish database connection for storing form submissions
     $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
+    // Create table if it doesn't exist
     $create_table = "
     CREATE TABLE IF NOT EXISTS eoi (
         EOInumber INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,6 +38,7 @@
     )";
     mysqli_query($conn, $create_table);
 
+    // Function to sanitise input (trim, strip slashes, escape HTML)
     function sanitise_input($data)
     {
         $data = trim($data);
@@ -42,6 +47,7 @@
         return $data;
     }
 
+    // Fields expected from form (excluding skill and others handled separately)
     $fields = [
         "jobref",
         "fname",
@@ -56,6 +62,7 @@
         "phone"
     ];
 
+    // Labels used for error messages
     $labels = [
         "jobref" => "Job Reference Number",
         "fname" => "First Name",
@@ -70,6 +77,7 @@
         "phone" => "Phone Number"
     ];
 
+    // Regex validation rules for specific fields
     $pattern = [
         "jobref" => "/^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{5}$/",
         "fname" => "/^[A-Za-z ]{1,20}$/",
@@ -79,12 +87,14 @@
         "phone" => "/^[0-9]{8,12}$/"
     ];
 
+    // Allowed dropdown / checkbox values
     $allowed = [
         "gender" => ["male","female","prefer-not-to-say"],
         "state" => ["VIC","NSW","QLD","NT","WA","SA","TAS","ACT"],
         "skill" => ["excel","mysql","python","java","spss","other"]
     ];
 
+    // Custom error messages
     $error_msg = [
         "fname" => "First name must be max 20 letters only.",
         "lname" => "Last name must be max 20 letters only.",
@@ -95,41 +105,52 @@
         "skill" => "At least one skill must be selected."
     ];
 
+    // Stores validation errors
     $errors = [];
+
+    // Stores sanitised input values
     $user_input = [];
 
+    // Validate normal input fields
     foreach ($fields as $field) {
 
+        // Sanitise user input
         $user_input[$field] = sanitise_input($_POST[$field] ?? "");
 
+        // Required field check
         if (empty($user_input[$field])) {
             $errors[$field] = "$labels[$field] is required.";
             continue;
         }
 
+        // Pattern validation
         if (isset($pattern[$field]) &&
             !preg_match($pattern[$field], $user_input[$field])) {
             $errors[$field] = $error_msg[$field];
         }
 
+        // Allowed value validation
         if (isset($allowed[$field]) &&
             !in_array($user_input[$field], $allowed[$field])) {
             $errors[$field] = "Invalid $labels[$field] selected.";
         }
 
+        // Email format validation
         if ($field === "email" && !filter_var($user_input["email"], FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = $error_msg["email"];
         }
     }
 
+    // Handle checkbox input separately because skill is an array, unlike other form fields
     if (empty($_POST["skill"])) {
         $errors["skill"] = $error_msg["skill"];
         $user_input["skill"] = [];
     }
     else {
         $skill = $_POST["skill"];
-        $valid = true;
 
+        // Validate each selected skill
+        $valid = true;
         foreach ($skill as $s) {
             if (!in_array($s, $allowed["skill"])) {
                 $valid = false;
@@ -145,9 +166,13 @@
         }
     }
 
+    // Other skills field
     $user_input["others"] = sanitise_input($_POST["others"] ?? "");
 
+    // If validation fails, redirect back with errors
     if (!empty($errors)) {
+
+        // Store validation errors and user input in session to repopulate form after redirect
         $_SESSION["errors"] = $errors;
         $_SESSION["form_data"] = $user_input;
 
@@ -157,6 +182,7 @@
         exit();
     }
 
+    // Convert validated input array into variables for prepared statement binding
     foreach ($user_input as $field => $value) {
         if ($field === "skill") {
             $value = implode(", ", $value);
@@ -165,6 +191,7 @@
         $$field = $value;
     }
 
+    // Insert validated form data into database using prepared statement (prevents SQL injection)
     $stmt = mysqli_prepare(
         $conn,
         "INSERT INTO eoi
@@ -186,6 +213,7 @@
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     );
 
+    // Bind parameters to query
     mysqli_stmt_bind_param(
         $stmt,
         "sssssssssssss",
@@ -204,8 +232,10 @@
         $others
     );
 
+    // Execute prepared statement and insert data into database
     $result = mysqli_stmt_execute($stmt);
 
+    // Retrieve auto-generated EOInumber after successful insert
     if ($result) {
         $eoi_number = mysqli_insert_id($conn);
 
@@ -218,7 +248,7 @@
         echo "Database error: " . mysqli_error($conn);
     }
 
+    // Close statement and connection
     mysqli_stmt_close($stmt);
-
     mysqli_close($conn);
 ?>

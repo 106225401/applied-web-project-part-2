@@ -1,33 +1,41 @@
 <!--Job Application Page-->
 
 <?php
+    // Start session to retrieve validation errors and previously submitted form data
     session_start();
 
+    // Retrieve validation errors and previously entered form values
     $errors = $_SESSION["errors"] ?? [];
     $user_input = $_SESSION["form_data"] ?? [];
 
+    // Clear session data after retrieving so it doesn't persist on refresh
     unset($_SESSION["errors"]);
     unset($_SESSION["form_data"]);
 
+    // Function to retain selected values after form submission failure (select, radio, checkbox)
     function check_form_state($type, $field, $value, $user_input)
     {
         if (!isset($user_input[$field])) {
             return '';
         }
 
+        // Dropdown selection
         if ($type === 'select' && $user_input[$field] === $value) {
             return 'selected';
         }
 
+        // Radio button selection
         if ($type === 'radio' && $user_input[$field] === $value) {
             return 'checked';
         }
 
+        // Checkbox selections (array-based input)
         if ($type === 'checkbox' && in_array($value, $user_input[$field])) {
                 return 'checked';
         }
     }
 
+    // Function to display validation error messages for each field
     function display_error($field, $errors)
     {
         echo "<span class='error-msg'>" . ($errors[$field] ?? '') . "</span>";
@@ -287,6 +295,7 @@
                 <!-- Form submission and reset buttons -->
                 <div class="two-btn">
                     <button type="submit">Apply</button>
+                    <!-- Reset form by reloading page without session data -->
                     <a href="apply.php">Reset Form</a>
                 </div>
             </form>
