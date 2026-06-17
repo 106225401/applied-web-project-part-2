@@ -28,12 +28,12 @@ if($dbconn){
         <meta name="keywords" content="university jobs, job application, IT careers, digital learning, innovation, research">
         <meta name="author" content="Charlotte">
 
-    <title><?php echo $pageTitle; ?></title>
+    <title>Available Jobs Positions | NextGenDevs</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 
     <!-- Embedded CSS for page-specific styling -->
     <style>

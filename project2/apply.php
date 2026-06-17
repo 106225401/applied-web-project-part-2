@@ -43,59 +43,56 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo $pageDescription; ?>">
-    <meta name="keywords" content="<?php echo $pageKeywords; ?>">
-    <meta name="author" content="<?php echo $pageAuthor; ?>">
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Apply for positions in the Digital Learning and Innovation (DLI) Department at NextGen Devs University.">
+        <meta name="keywords" content="university jobs, job application, IT careers, digital learning, innovation, research">
+        <meta name="author" content="Jingyee">
 
-    <title><?php echo $pageTitle; ?></title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+        <!-- Tab bar: title and icon -->
+        <title>Job Application</title>
+        <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
         <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 
-    <!-- Embedded CSS for page-specific styling -->
-    <style>
-        /* Global Text Selection Style */
-        ::selection {
-            background: var(--purple-inkk);
-            color: white;
-        }
+        <!-- Embedded CSS styling -->
+        <style>
+            /* Global Text Selection Style */
+            ::selection {
+                background: var(--purple-inkk);
+                color: white;
+            }
 
-        /* Job Help Link Interaction */
-        #job-help a {
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: inherit;
-            text-decoration: none;
-        }
+            /* Job Help Link Interaction */
+            #job-help a {
+                font-weight: bold;
+                font-size: 0.8rem;
+                color: inherit;
+                text-decoration: none;
+            }
 
-        #job-help a:hover {
-            color: var(--purple-blue);
-            text-decoration: underline;
-        }
+            #job-help a:hover {
+                color: var(--purple-blue);
+                text-decoration: underline;
+            }
 
-        /* Job Help List Item Sizing */
-        #job-help ul li {
-            font-size: 0.75rem;
-        }
-    </style>
-</head>
+            /* Job Help List Item Sizing */
+            #job-help ul li { font-size: 0.75rem; }
+        </style>
+    </head>
 
     <body>
         <?php include 'header.inc';?>
 
-    <main id="main">
-        <!-- Form Heading with Call-to-Action -->
-        <section class="apply-heading">
-            <h1 id="apply-title">Job Application Form</h1>
-            <a href="#application-form" class="cta-btn">Apply Now</a>
-        </section>
+        <main id="main">
+            <!-- Form heading: page title and call-to-action -->
+            <section class="apply-heading">
+                <h1 id="apply-title">Job Application Form</h1>
+                <a href="#application-form" class="cta-btn">Apply Now</a>
+            </section>
 
             <nav class="short-keys" aria-label="Job application form sections">
                 <ul>
@@ -108,11 +105,9 @@
             <form id="application-form" aria-labelledby="apply-title"
                 action="process_eoi.php" method="post" novalidate>
 
-            <!-- ============================================== -->
-            <!-- SECTION 1: Position Selection                  -->
-            <!-- ============================================== -->
-            <section id="job" class="form-section" aria-labelledby="job-title">
-                <h2 id="job-title">Position to Apply For</h2>
+                <!-- Position selection section -->
+                <section id="job" class="form-section" aria-labelledby="job-title">
+                    <h2 id="job-title">Position to Apply For</h2>
 
                     <label for="jobref">Job Reference Number:</label>
                     <select id="jobref" name="jobref"
@@ -134,15 +129,12 @@
                     </div>
                 </section>
 
-            <!-- ============================================== -->
-            <!-- SECTION 2: Applicant Details                   -->
-            <!-- ============================================== -->
-            <section id="applicant-details" class="form-section" aria-labelledby="details-title">
-                <h2 id="details-title">Applicant Details</h2>
+                <!-- Applicant details section -->
+                <section id="applicant-details" class="form-section" aria-labelledby="details-title">
+                    <h2 id="details-title">Applicant Details</h2>
 
-                <!-- Personal Information Fieldset -->
-                <fieldset>
-                    <legend>Personal Information</legend>
+                    <fieldset>
+                        <legend>Personal Information</legend>
 
                         <label for="fname">First Name:</label>
                         <input type="text" id="fname" name="fname"
@@ -191,9 +183,8 @@
                         </fieldset>
                     </fieldset>
 
-                <!-- Address & Contact Fieldset -->
-                <fieldset>
-                    <legend>Address & Contact</legend>
+                    <fieldset>
+                        <legend>Address & Contact</legend>
 
                         <label for="street">Street Address</label>
                         <input type="text" id="street" name="street"
@@ -209,9 +200,8 @@
                             title="Format: max 40 characters">
                         <?php display_error('suburb', $errors); ?>
 
-                    <label for="state">State</label>
-                    <select id="state"
-                            name="state"
+                        <label for="state">State</label>
+                        <select id="state" name="state"
                             autocomplete="address-level1"
                             title="Select State">
                             <option value="">-- Please Select --</option>
@@ -249,14 +239,12 @@
                     </fieldset>
                 </section>
 
-            <!-- ============================================== -->
-            <!-- SECTION 3: Professional Skills                 -->
-            <!-- ============================================== -->
-            <section id="skills" class="form-section" aria-labelledby="skills-title">
-                <h2 id="skills-title">Professional Skills</h2>
+                <!-- Skills selection section -->
+                <section id="skills" class="form-section" aria-labelledby="skills-title">
+                    <h2 id="skills-title">Professional Skills</h2>
 
-                <fieldset>
-                    <legend>Skills</legend>
+                    <fieldset>
+                        <legend>Skills</legend>
 
                         <div class="skill-item">
                             <input type="checkbox" id="excel" name="skill[]" value="excel"

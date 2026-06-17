@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login | NextGenDevs</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
-    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 </head>
 <body class="login-page">
     <div class="card-container">

@@ -1,39 +1,18 @@
-<?php
-/* =====================================================
- *  index.php – Home Page
- *  NextGen Devs Website – Applied Web Project Part 2
- *  Author: Afif – Manager & Developer
- *  Individual Responsibility: index.php + styles.css
- *  =====================================================
- *
- *  Description:
- *  Main landing page showcasing company introduction,
- *  core values, and call-to-action sections.
- *  
- *  Includes: header.inc, nav.inc, footer.inc
- */
-
-// Page-specific meta information
-$pageTitle = "NextGen Devs | Home - Digital Learning & Innovation";
-$pageDescription = "NextGen Devs - Digital Learning and Innovation (DLI) Department. Building future-ready digital solutions for education and research.";
-$pageKeywords = "nextgen devs, home page, digital learning, innovation, research";
-$pageAuthor = "Afif - NextGen Devs";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="<?php echo $pageDescription; ?>">
-    <meta name="keywords" content="<?php echo $pageKeywords; ?>">
-    <meta name="author" content="<?php echo $pageAuthor; ?>">
+    <meta name="description" content="NextGen Devs - Digital Learning and Innovation (DLI) Department. Building future-ready digital solutions for education and research.">
+    <meta name="keywords" content="nextgen devs, home page, digital learning, innovation, research">
+    <meta name="author" content="Afif - NextGen Devs">
 
-    <title><?php echo $pageTitle; ?></title>
+    <title>"NextGen Devs | Home - Digital Learning & Innovation"</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 
     <!-- Embedded CSS for page-specific styling -->
     <style>
