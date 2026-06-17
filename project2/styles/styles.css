@@ -278,19 +278,7 @@ a:focus .sr-only {
 }
 
 /* Global buttons */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a {
-=======
-.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a, .submit-btn, .btn-logout {
->>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
-=======
-.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout {
->>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
-=======
-.apply-now, .two-btn button, .two-btn a, .submit-btn, .btn-logout, .return-link a {
->>>>>>> 4c3a900 (Added social media icons at the footer and modified login.php to meet WAVE requirements)
   display: inline-block;
   background-color: var(--purple-inkk);
   color: var(--white);
@@ -309,22 +297,8 @@ a:focus .sr-only {
               transform       0.15s ease;
 }
  
-<<<<<<< HEAD
-<<<<<<< HEAD
 .apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
 .two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .return-link a:hover {
-=======
-.apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
-.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .btn-logout:hover, .return-link a:hover {
->>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
-=======
-.apply-now:hover, .apply-now:focus, .two-btn button:hover, .two-btn a:hover, 
-<<<<<<< HEAD
-.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover {
->>>>>>> a0f5845 (Added the modified php files for manage.php and process_eoi.php and apply.php and styles.css)
-=======
-.two-btn button:focus, .two-btn a:focus, .submit-btn:hover, .submit-btn:focus, .btn-logout:hover, .return-link a:hover {
->>>>>>> 4c3a900 (Added social media icons at the footer and modified login.php to meet WAVE requirements)
   background-color: var(--peach);
   color: var(--purple-inkk);
   border-color: var(--purple-inkk);
@@ -1791,15 +1765,7 @@ Start of manage page styling
     padding: 0.7rem 0.9rem;
     text-align: left;
     font-weight: 600;
-<<<<<<< HEAD
-<<<<<<< HEAD
     color: var(--purple-deeper);
-=======
-    color: var(--muted);
->>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
-=======
-    color: var(--purple-deeper);
->>>>>>> 6758f1b (Modified styling of php files to resolve WAVE errors)
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1891,7 +1857,6 @@ Start of manage page styling
 /* 
 The end of manage page styling
 */
-<<<<<<< HEAD
 
 /* 
 Start of Successful Application sent
@@ -1926,8 +1891,6 @@ Start of Successful Application sent
 /* 
 End of Successful Application sent
 */
-=======
->>>>>>> d75c5e4 (Added login.php & logout.php & manage.php & admin.php to create all necessary files for the instructions given at part 6 & 7)
 
 /* 
 Start of Successful Application sent
