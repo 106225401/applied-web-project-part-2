@@ -33,8 +33,7 @@ $pageAuthor = "Afif - NextGen Devs";
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <!-- External Stylesheet – FIX: Correct path to styles/ folder -->
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
     <!-- Embedded CSS for page-specific styling -->
     <style>
@@ -47,10 +46,10 @@ $pageAuthor = "Afif - NextGen Devs";
 </head>
 
 <body>
-    <?php include 'header.inc'; ?>
+    <?php include 'header.inc';?>
 
-    <main id="main-content" class="content-wrapper">
-        <!-- Company Introduction Section -->
+    <main id="main" class="content-wrapper">       
+        <!-- Group Details: logo, name, slogan, description, image -->
         <section aria-label="Company introduction">
             <div class="intro-box">
                 <div class="group-info">
@@ -115,6 +114,6 @@ $pageAuthor = "Afif - NextGen Devs";
         </div>
     </main>
 
-    <?php include 'footer.inc'; ?>
+    <?php include 'footer.inc';?>
 </body>
 </html>

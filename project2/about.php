@@ -1,25 +1,29 @@
-<?php
-/* =====================================================
- *  about.php – About Us Page
- *  NextGen Devs Website – Applied Web Project Part 2
- *  Author: Louis (Ye Htet Aung) – Editor & Developer
- *  Individual Responsibility: about.php + styles.css
- *  =====================================================
- *
- *  Description:
- *  Team introduction page featuring group details,
- *  member profiles with contributions, team photos,
- *  and fun facts table.
- *  
- *  Includes: header.inc, nav.inc, footer.inc
- */
+<!-- About Us page -->
 
-// Page-specific meta information
-$pageTitle = "About Us";
-$pageDescription = "About NextGen Devs: Meet our team, learn more about our members, and discover fun facts & quotes about our group.";
-$pageKeywords = "nextgen devs, about us, digital learning, innovation, research";
-$pageAuthor = "Ye Htet Aung";
+<?php
+require_once 'settings.php';
+$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
+$members  = [];
+$db_error = '';
+
+if (!$conn) {
+    $db_error = 'Unable to load member data right now.';
+} else {
+    mysqli_set_charset($conn, 'utf8mb4');   // so foreign-language quotes display correctly
+    $result = mysqli_query($conn, "SELECT * FROM aboutus ORDER BY id");
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $members[] = $row;
+        }
+    } else {
+        $db_error = 'Unable to load member data right now.';
+    } 
+
+    mysqli_close($conn);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,25 +33,14 @@ $pageAuthor = "Ye Htet Aung";
     <meta name="keywords" content="<?php echo $pageKeywords; ?>">
     <meta name="author" content="<?php echo $pageAuthor; ?>">
 
-    <title><?php echo $pageTitle; ?></title>
-    
-    <!-- Favicon -->
+    <title>About Us | NextGenDevs</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-    <!-- External Stylesheet – FIX: Correct path to styles/ folder -->
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
     <!-- Embedded CSS for page-specific styling -->
     <style>
-        code {
-            font-size: 1em;
-            background-color: var(--purple-light);
-            padding: 0.3em 0.3em;
-            border-radius: 5px;
-            color: var(--purple-inkk);
-        }
-
-        .progLang img {
+        .prog-lang img {
             display: inline;
             vertical-align: middle;
             margin-left: 1px;
@@ -56,7 +49,7 @@ $pageAuthor = "Ye Htet Aung";
 </head>
 
 <body>
-    <?php include 'header.inc'; ?>
+    <?php include 'header.inc';?>
 
     <main id="main">
         <!-- Team Introduction Section -->
@@ -65,8 +58,8 @@ $pageAuthor = "Ye Htet Aung";
 
             <!-- Team Slogan Quote -->
             <blockquote>
-                <p><a href="apply.php" target="_blank">"Code, Create, Conquer"</a></p>
-                <cite>&mdash; NextGen Devs</cite>
+                <p><a href="apply.php" target="_blank">"Code, Create, Conquer" </a></p>
+                <cite>— NextGen Devs</cite>
             </blockquote>
 
             <!-- Introductory Paragraph -->
@@ -92,17 +85,45 @@ $pageAuthor = "Ye Htet Aung";
                 <li>
                     <strong>Course Schedule: </strong>
                     <ul>
-                        <li>COS20007</li>
+                        <li>COS20007 | Web Development Course</li>
+                        <li>Monday: <em>Lecture</em>
+                            <ul class="group-details-inner-content">
+                                <li>12:00 - 2:00 p.m.</li>
+                                <li>Block G, Level 3, R3.1</li>
+                            </ul>
+                        </li>
+
                         <li>Tuesday: <em>Lecture</em>
-                            <ul>
+                            <ul class="group-details-inner-content">
                                 <li>2:00 - 4:00 p.m.</li>
                                 <li>Block A, Level 8, LH4</li>
                             </ul>
                         </li>
                         <li>Wednesday: <em>Lab</em>
-                            <ul>
+                            <ul class="group-details-inner-content">
                                 <li>8:00 - 10:00 a.m.</li>
-                                <li>Block A, Level 3, CSC2</li>
+                                <li>Block A, Level 3, CSC02</li>
+                            </ul>
+                        </li>
+
+                        <li>Thursday: <em>Tutorial</em>
+                            <ul class="group-details-inner-content">
+                                <li>10:00 - 12:00 p.m.</li>
+                                <li>Block C, Level 2, R201</li>
+                            </ul>
+                        </li>
+
+                        <li>Friday: <em>Tutorial</em>
+                            <ul class="group-details-inner-content">
+                                <li>4:00 - 6:00 p.m.</li>
+                                <li>Block C, Level 2, R202</li>
+                            </ul>
+                        </li>
+
+                        <li>Weekends: <em>Self-learning</em>
+                            <ul class="group-details-inner-content">
+                                <li>Available from 10:00 a.m. until 4 p.m.</li>
+                                <li>Online</li>
                             </ul>
                         </li>
                     </ul>
@@ -125,98 +146,39 @@ $pageAuthor = "Ye Htet Aung";
 
             <p>Below are a brief profile of each member, their roles &amp; contributions, and a personal quote.</p>
 
+            <!-- Rendering data from database for each member by looping -->
             <dl>
-                <!-- ============================== MEMBER 1 ============================== -->
-                <dt>
-                    <span class="name"><strong>Member 1:</strong> Ng Jing Yee (Jingyee)</span>
-                    <span class="id">106225401</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Organizer &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility: </strong><code>apply.php</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> manage Github &amp; Jira project, give inputs on page design, organize team communication</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Mandarin, Bahasa Melayu, &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python
-                            <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;">
-                        </li>
-                    </ul>
+                <?php if ($db_error != ''): ?>
+                    <p><?= htmlspecialchars($db_error) ?></p>
+                <?php elseif (empty($members)): ?>
+                    <p>No member contribution found.</p>
+                <?php else: ?>
+                    <?php foreach($members as $m): ?>
+                    <dt>
+                        <span class="name"><strong>Member <?=  htmlspecialchars($m['id']) ?>:</strong> <?= htmlspecialchars($m['full_name']) ?> (<?= htmlspecialchars($m['nickname']) ?>)</span>
 
-                    <blockquote>
-                        <p class="tran-quote">" Believe in yourself, and anything is possible "</p>
-                        <p class="og-quote">" 相信自己，一切皆可能 "</p>
-                        <cite>&mdash; Jingyee</cite>
-                    </blockquote>
-                </dd>
+                        <span class="id"><?= htmlspecialchars($m['student_id']) ?></span>
+                    </dt>
 
-                <!-- ============================== MEMBER 2 ============================== -->
-                <dt>
-                    <span class="name"><strong>Member 2:</strong> Eaint Wunna Aung (Charlotte)</span>
-                    <span class="id">106403058</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Leader &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>jobs.php</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> oversee the project progress and completion status, act as a group representative, give inputs on page design</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Burmese &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Python
-                            <img src="images/python.ico" alt="python logo" style="width: 20px; height: 20px; display: inline;">
-                        </li>
-                    </ul>
+                    <dd>
+                        <ul>
+                            <li class="roles"><strong>Role:</strong> <?= htmlspecialchars($m['role']) ?></li>
+                            <li class="indiv-contrib"><strong>Project Part 1 Responsibility: </strong><?= htmlspecialchars($m['project_part1']) ?></li>
+                            <li class="share-contrib"><strong>Project Part 2 Responsibility: </strong><?= htmlspecialchars($m['project_part2']) ?></li>
+                            <li class="speak-lang"><strong>Languages:</strong> <?= htmlspecialchars($m['languages']) ?></li>
+                            <li class="prog-lang"><strong>Favourite Programming Language:</strong> <?= htmlspecialchars($m['fav_programming']) ?> <img src="<?=htmlspecialchars($m['icon_source'])?>" alt="<?=htmlspecialchars($m['icon_source'])?> logo" style="width: auto; height: 20px; display: inline;"></li>
+                        </ul>
 
-                    <blockquote>
-                        <p class="tran-quote">" The things happen in a natural course of events "</p>
-                        <p class="og-quote">" Phit yoe phit sin "</p>
-                        <cite>&mdash; Charlotte</cite>
-                    </blockquote>
-                </dd>
-
-                <!-- ============================== MEMBER 3 ============================== -->
-                <dt>
-                    <span class="name"><strong>Member 3:</strong> Ye Htet Aung (Louis)</span>
-                    <span class="id">106399199</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Editor &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>about.php</code> &plus; <code>styles.css</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> review &amp; edit all files for consistency, formatting, and accessibility, design the external css file</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Burmese, English, &amp; German</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java
-                            <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;">
-                        </li>
-                    </ul>
-
-                    <blockquote>
-                        <p class="tran-quote">" What you have is what you have "</p>
-                        <p class="og-quote">" Was man hat, das hat man "</p>
-                        <cite>&mdash; Louis</cite>
-                    </blockquote>
-                </dd>
-
-                <!-- ============================== MEMBER 4 ============================== -->
-                <dt>
-                    <span class="name"><strong>Member 4:</strong> Amirul Afif (Afif)</span>
-                    <span class="id">106201456</span>
-                </dt>
-                <dd>
-                    <ul>
-                        <li class="roles"><strong>Role:</strong> Manager &amp; Developer</li>
-                        <li class="indiv-contrib"><strong>Individual Responsibility:</strong> <code>index.php</code> &plus; <code>styles.css</code></li>
-                        <li class="share-contrib"><strong>Contributions:</strong> monitor the project workflow on Jira, design the external css file</li>
-                        <li class="speak-lang"><strong>Languages:</strong> Bahasa Melayu &amp; English</li>
-                        <li class="prog-lang"><strong>Favourite Programming Language:</strong> Java
-                            <img src="images/java.ico" alt="Java logo" style="height: 20px; display: inline;">
-                        </li>
-                    </ul>
-
-                    <blockquote>
-                        <p class="tran-quote">" Stay calm "</p>
-                        <p class="og-quote">" Kekal tenang "</p>
-                        <cite>&mdash; Afif</cite>
-                    </blockquote>
-                </dd>
+                        <blockquote>
+                            <p class="tran-quote">" <?= htmlspecialchars($m['quote_translated']) ?> "</p>
+                            
+                            <p class="og-quote">" <?= htmlspecialchars($m['quote_original']) ?> "</p>
+                            
+                            <cite>— <?= htmlspecialchars($m['nickname']) ?></cite>
+                        </blockquote>
+                    </dd>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </dl>
         </section>
 
@@ -247,29 +209,13 @@ $pageAuthor = "Ye Htet Aung";
                 </figure>
 
                 <figure class="pic2">
-                    <label for="img3">
-                        <img src="images/gpic2.jpeg"
-                             alt="Our team members selfie at Bingxue - free style picture 2"
-                             loading="lazy">
-                    </label>
-                    <figcaption>
-                        2/3 - Meeting at Bingxue; Selfie 2
-                        <p>From top left to right: Afif and Louis.</p>
-                        <p>From bottom left to right: Charlotte and Jingyee</p>
-                    </figcaption>
+                    <label for="img3"><img src="images/gpic2.jpeg" alt="Our team members selfie at Bingxue - free style picture 2" loading="lazy"></label>
+                    <figcaption>2/3 - Meeting at Bingxue; Selfie 2 <p>From top left to right: Afif and Louis.</p> <p>From bottom left to right: Charlotte and Jingyee</p></figcaption>
                 </figure>
 
                 <figure class="pic3">
-                    <label for="img1">
-                        <img src="images/gpic3.jpeg"
-                             alt="Our team members selfie at Bingxue - free style picture 3"
-                             loading="lazy">
-                    </label>
-                    <figcaption>
-                        3/3 - Meeting at Bingxue; Selfie 3
-                        <p>From top left to right: Afif and Louis.</p>
-                        <p>From bottom left to right: Charlotte and Jingyee</p>
-                    </figcaption>
+                    <label for="img1"><img src="images/gpic3.jpeg" alt="Our team members selfie at Bingxue - free style picture 3" loading="lazy"></label>
+                    <figcaption>3/3 - Meeting at Bingxue; Selfie 3 <p>From top left to right: Afif and Louis.</p> <p>From bottom left to right: Charlotte and Jingyee</p></figcaption>
                 </figure>
             </div>
         </section>
@@ -326,7 +272,7 @@ $pageAuthor = "Ye Htet Aung";
             </div>
         </section>
     </main>
-
-    <?php include 'footer.inc'; ?>
+    
+    <?php include 'footer.inc';?>
 </body>
 </html>
