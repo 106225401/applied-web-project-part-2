@@ -238,17 +238,48 @@
     // Retrieve auto-generated EOInumber after successful insert
     if ($result) {
         $eoi_number = mysqli_insert_id($conn);
-
-        echo "<h1>Application Submitted Successfully</h1>";
-        echo "<p>Your EOI Number is: $eoi_number</p>";
-        echo "<p><a href='index.php'>Return Home</a></p>";
     }
-
+    
     else {
-        echo "Database error: " . mysqli_error($conn);
+        die("Database error: " . mysqli_error($conn));
     }
 
     // Close statement and connection
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 ?>
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Application confirmation page">
+        <meta name="keywords" content="job application, confirmation, EOI">
+        <meta name="author" content="Jingyee">
+
+        <!-- Tab bar: title and icon -->
+        <title>Application Successful</title>
+        <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
+    </head>
+
+    <body>
+        <main id="main">
+            <!-- Confirmation heading -->
+            <h1 class="success-header">Application Submitted Successfully</h1>
+
+            <!-- EOI number display -->
+            <p class="eoi-no">
+                Your EOI Number is: <?= htmlspecialchars($eoi_number) ?>
+            </p>
+
+            <!-- Link to homepage -->
+            <p class="return-link">
+                <a href="index.php">Return Home</a>
+            </p>
+        </main>
+    </body>
+</html>
