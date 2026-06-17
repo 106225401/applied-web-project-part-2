@@ -168,7 +168,7 @@ if (!$conn) {
                         <ul>
                             <li class="roles"><strong>Role:</strong> <?= htmlspecialchars($m['role']) ?></li>
                             <li class="indiv-contrib"><strong>Project Part 1 Responsibility: </strong><?= htmlspecialchars($m['project_part1']) ?></li>
-                            <li class="share-contrib"><strong>Project Part 2 Responsibility:</strong><?= htmlspecialchars($m['project_part2']) ?></li>
+                            <li class="share-contrib"><strong>Project Part 2 Responsibility: </strong><?= htmlspecialchars($m['project_part2']) ?></li>
                             <li class="speak-lang"><strong>Languages:</strong> <?= htmlspecialchars($m['languages']) ?></li>
                             <li class="prog-lang"><strong>Favourite Programming Language:</strong> <?= htmlspecialchars($m['fav_programming']) ?> <img src="<?=htmlspecialchars($m['icon_source'])?>" alt="<?=htmlspecialchars($m['icon_source'])?> logo" style="width: auto; height: 20px; display: inline;"></li>
                         </ul>

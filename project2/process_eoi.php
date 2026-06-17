@@ -207,6 +207,7 @@
         
         echo '<html lang="en">';
         echo '<title>Application Submission Success | NextGenDevs</title>';
+        echo '<link rel="icon" type="image/x-icon" href="images/logo.ico">';
         echo '<link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">';
 
         echo "<h1 class='success-header'>Application Submitted Successfully</h1>";
