@@ -48,7 +48,7 @@
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
         <!-- Link to external CSS -->
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 
         <!-- Embedded CSS styling -->
         <style>
