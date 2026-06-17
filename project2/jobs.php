@@ -1,6 +1,6 @@
 <?php
 require_once "settings.php";
-$dbconn =@mysqil_connect($host, $user, $pwd, $sql_db);
+$dbconn =@mysqli_connect($host, $user, $pwd, $sql_db);
 
 if($dbconn){
     $query = "SELECT* FROM jobs ORDER by job_id";
@@ -31,7 +31,7 @@ if($dbconn){
         <title>Available Job Positions</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
 
         <!-- Embedded CSS for UI Styling -->
         <style>
@@ -48,12 +48,12 @@ if($dbconn){
 <body>
     <?php include 'header.inc';?>
 
-    <main id="jobs-main">
+    <main id="main">
         <h1 class="jobs-heading">Available Job Positions</h1>        
         <div class="short-keys">
             <nav aria-label="Job Position Description Anchor Links">
                 <ul>
-                    //CHANGES 
+                    <!-- CHANGES --> 
                     <?php foreach ($jobs as $job): ?>
                         <li><a href="#<?php echo htmlspecialchars($job['anchor_slug']); ?>"><?php echo htmlspecialchars($job['title']); ?></a></li>
                     <?php endforeach; ?>
@@ -82,7 +82,8 @@ if($dbconn){
 
         <div class="available-jobs">
             
-            <section id="digital" class="job">   //CHANGES
+            <section id="digital">   
+                <!-- CHANGES -->
                 <?php foreach ($jobs as $job): ?>
             <section id="<?php echo htmlspecialchars($job['anchor_slug']); ?>" class="job">
                 <h2><?php echo htmlspecialchars($job['title']); ?></h2>
@@ -93,7 +94,7 @@ if($dbconn){
 
                 <h4>Salary</h4>
                 <ul>
-                    //CHANGES
+                    <!-- CHANGES -->
                     <li>
                         $<?php echo number_format($job['salary_min']); ?> <?php echo htmlspecialchars($job['salary_currency']); ?>
                         – $<?php echo number_format($job['salary_max']); ?> <?php echo htmlspecialchars($job['salary_currency']); ?>
@@ -104,14 +105,14 @@ if($dbconn){
                     Reporting Line
                 </h4>
                 <ul>
-                    <li><?php echo htmlspecialchars($job['reporting_line']); ?></li>  //CHANGES
+                    <li><?php echo htmlspecialchars($job['reporting_line']); ?></li>  <!-- CHANGES -->
                 </ul>
                 <h4>
                     Key Responsibilities
                 </h4>
                 <ol>
                     <li>
-                    <?php foreach (explode('|', $job['key_responsibilities']) as $item): ?>  //CHANGES
+                    <?php foreach (explode('|', $job['key_responsibilities']) as $item): ?>  <!-- CHANGES -->
                         <li><?php echo htmlspecialchars($item); ?></li>
                     <?php endforeach; ?>
                     </li>
@@ -120,20 +121,20 @@ if($dbconn){
                     Essential Requirements
                 </h4>
                 <ol>
-                    <?php foreach (explode('|', $job['essential_requirements']) as $item): ?> //CHANGES
+                    <?php foreach (explode('|', $job['essential_requirements']) as $item): ?> <!-- CHANGES -->
                         <li><?php echo htmlspecialchars($item); ?></li>
                     <?php endforeach; ?>
                 </ol>
                 <h4>
                     Preferable Requirements
                 </h4>
-                <ol>  //CHANGES
+                <ol>  <!-- CHANGES -->
                 <?php foreach (explode('|', $job['preferable_requirements']) as $item): ?>
                         <li><?php echo htmlspecialchars($item); ?></li>
                     <?php endforeach; ?>
                 </ol>
                 <div class="apply-box">
-                    <a href="apply.php?ref=<?php echo urlencode($job['reference_number']); ?>" class="apply-now" style="font-size:large">Apply Now</a>  //CHANGES
+                    <a href="apply.php?ref=<?php echo urlencode($job['reference_number']); ?>" class="apply-now" style="font-size:large">Apply Now</a>  <!-- CHANGES -->
                 </div>
             
             </section>
