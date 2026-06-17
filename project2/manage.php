@@ -73,7 +73,7 @@ $sort_dir         = ($_GET['sort_dir'] ?? 'ASC') == 'DESC' ? 'DESC' : 'ASC';
 // Whitelist sortable columns to prevent SQL injection
 $allowed_sort = [
     'EOInumber','jobref','fname','lname',
-    'dob','gender','email','status'
+    'dob','gender','email','status', 'street', 'suburb', 'state', 'postcode'
 ];
 
 if (!in_array($sort_field, $allowed_sort)) {
@@ -135,7 +135,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage EOIs | NextGenDevs</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
-    <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -188,35 +188,45 @@ mysqli_close($conn);
                 <div class="filter-row">
                     <div class="filter-group">
                         <label for="filter_jobref">Job Reference</label>
-                        <input type="text" id="filter_jobref" name="filter_jobref"
-                               placeholder="e.g. DEV001"
-                               value="<?= htmlspecialchars($filter_jobref) ?>">
+                        <select id="filter_jobref" name="filter_jobref"
+                        aria-describedby="jobref-filter">
+                            <option value="" disabled selected hidden>-- Please Select --</option>
+                            <option value="dlr01">DLR01</option>
+                            <option value="lms02">LMS02</option>
+                            <option value="res03">RES03</option>
+                        </select>
                     </div>
+
                     <div class="filter-group">
                         <label for="filter_firstname">First Name</label>
                         <input type="text" id="filter_firstname" name="filter_firstname"
                                placeholder="Search..."
                                value="<?= htmlspecialchars($filter_firstname) ?>">
                     </div>
+
                     <div class="filter-group">
                         <label for="filter_lastname">Last Name</label>
                         <input type="text" id="filter_lastname" name="filter_lastname"
                                placeholder="Search..."
                                value="<?= htmlspecialchars($filter_lastname) ?>">
                     </div>
+
                     <div class="filter-group">
                         <label for="sort_field">Sort By</label>
                         <select id="sort_field" name="sort_field">
                             <?php
                             $sort_options = [
-                                'EOInumber'     => 'EOI Number',
+                                'EOInumber' => 'EOI Number',
                                 'jobref' => 'Job Reference',
-                                'fname'    => 'First Name',
-                                'lname'     => 'Last Name',
-                                'dob' => 'Date of Birth',
-                                'gender'        => 'gender',
-                                'email'         => 'email',
-                                'status'        => 'Status',
+                                'fname' => 'First Name',
+                                'lname' => 'Last Name',
+                                'gender' => 'Gender',
+                                'street' => 'Street',
+                                'suburb' => 'Suburb',
+                                'state' => 'State',
+                                'postcode' => 'Postcode',
+                                'email' => 'Email',
+                                'status' => 'Status',
                             ];
                             foreach ($sort_options as $val => $label):
                                 $sel = $sort_field == $val ? 'selected' : '';
@@ -225,6 +235,7 @@ mysqli_close($conn);
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="filter-group">
                         <label for="sort_dir">Order</label>
                         <select id="sort_dir" name="sort_dir">
@@ -232,6 +243,7 @@ mysqli_close($conn);
                             <option value="DESC" <?= $sort_dir == 'DESC' ? 'selected' : '' ?>>Descending</option>
                         </select>
                     </div>
+
                     <div class="filter-group filter-action">
                         <label class="label-spacer">x</label>
                         <div class="btn-row">
@@ -255,7 +267,13 @@ mysqli_close($conn);
                 <div class="filter-row">
                     <div class="filter-group">
                         <label for="del_jobref">Job Reference</label>
-                        <input type="text" id="del_jobref" name="del_jobref" placeholder="e.g. DEV001">
+                        <select id="del_jobref" name="del_jobref"
+                        aria-describedby="jobref-del">
+                            <option value="" disabled selected hidden>-- Please Select --</option>
+                            <option value="dlr01">DLR01</option>
+                            <option value="lms02">LMS02</option>
+                            <option value="res03">RES03</option>
+                        </select>
                     </div>
                     <div class="filter-group">
                         <label class="label-spacer">x</label>

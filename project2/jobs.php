@@ -31,7 +31,7 @@ if($dbconn){
         <title>Available Job Positions</title>
         <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-        <link rel="stylesheet" href="styles/styles.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="styles/styles.css?v=<?= filemtime('styles/styles.css') ?>">
 
         <!-- Embedded CSS for UI Styling -->
         <style>
