@@ -1680,7 +1680,8 @@ Start of manage page styling
 }
 
 .btn:hover  { 
-  opacity: 0.88; transform: translateY(-1px); 
+  opacity: 0.88; 
+  transform: translateY(-1px); 
 }
 
 .btn:active { 
@@ -1688,16 +1689,19 @@ Start of manage page styling
 }
 
 .btn-primary { 
-  background: var(--blue); color: var(--white); 
+  background: var(--blue); 
+  color: var(--white); 
 }
 
 .btn-danger  { 
-  background: var(--red);  color: var(--white);
+  background: var(--red);  
+  color: var(--white);
   width: 100px;
 }
 
 .btn-amber   { 
-  background: var(--amber); color: var(--white); 
+  background: var(--purple-extreme); 
+  color: var(--white); 
 }
 
 .btn-outline {

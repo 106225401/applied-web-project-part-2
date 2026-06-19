@@ -186,10 +186,9 @@ mysqli_close($conn);
             </div>
             <form method="GET" action="manage.php" novalidate>
                 <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="filter_jobref">Job Reference</label>
-                        <select id="filter_jobref" name="filter_jobref"
-                        aria-describedby="jobref-filter">
+                    <div class="filter-group" aria-labelledby="filter-jobref">
+                        <label for="filter-jobref">Job Reference</label>
+                        <select id="filter-jobref" name="filter-jobref">
                             <option value="" disabled selected hidden>-- Please Select --</option>
                             <option value="dlr01">DLR01</option>
                             <option value="lms02">LMS02</option>
@@ -197,23 +196,23 @@ mysqli_close($conn);
                         </select>
                     </div>
 
-                    <div class="filter-group">
-                        <label for="filter_firstname">First Name</label>
-                        <input type="text" id="filter_firstname" name="filter_firstname"
+                    <div class="filter-group" aria-labelledby="filter-firstname">
+                        <label for="filter-firstname">First Name</label>
+                        <input type="text" id="filter-firstname" name="filter-firstname"
                                placeholder="Search..."
                                value="<?= htmlspecialchars($filter_firstname) ?>">
                     </div>
 
-                    <div class="filter-group">
-                        <label for="filter_lastname">Last Name</label>
-                        <input type="text" id="filter_lastname" name="filter_lastname"
+                    <div class="filter-group" aria-labelledby="filter-lastname">
+                        <label for="filter-lastname">Last Name</label>
+                        <input type="text" id="filter-lastname" name="filter-lastname"
                                placeholder="Search..."
                                value="<?= htmlspecialchars($filter_lastname) ?>">
                     </div>
 
-                    <div class="filter-group">
-                        <label for="sort_field">Sort By</label>
-                        <select id="sort_field" name="sort_field">
+                    <div class="filter-group" aria-labelledby="sort-field">
+                        <label for="sort-field">Sort By</label>
+                        <select id="sort-field" name="sort-field">
                             <?php
                             $sort_options = [
                                 'EOInumber' => 'EOI Number',
@@ -236,18 +235,18 @@ mysqli_close($conn);
                         </select>
                     </div>
 
-                    <div class="filter-group">
-                        <label for="sort_dir">Order</label>
-                        <select id="sort_dir" name="sort_dir">
+                    <div class="filter-group" aria-labelledby="sort-dir">
+                        <label for="sort-dir">Order</label>
+                        <select id="sort-dir" name="sort-dir">
                             <option value="ASC"  <?= $sort_dir == 'ASC'  ? 'selected' : '' ?>>Ascending</option>
                             <option value="DESC" <?= $sort_dir == 'DESC' ? 'selected' : '' ?>>Descending</option>
                         </select>
                     </div>
 
                     <div class="filter-group filter-action">
-                        <label class="label-spacer">x</label>
+                        <label for="apply-btn" class="label-spacer">x</label>
                         <div class="btn-row">
-                            <button type="submit" class="btn btn-primary">Apply</button>
+                            <button type="submit" class="btn btn-primary" id="apply-btn">Apply</button>
                             <a href="manage.php" class="btn btn-outline">Reset</a>
                         </div>
                     </div>
@@ -263,12 +262,11 @@ mysqli_close($conn);
             </div>
             <form method="POST" action="manage.php" novalidate
                   onsubmit="return confirm('Delete ALL EOIs for this job reference? This cannot be undone.');">
-                <input type="hidden" name="action" value="delete_by_jobref">
+                <input type="hidden" name="action" value="delete-by-jobref">
                 <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="del_jobref">Job Reference</label>
-                        <select id="del_jobref" name="del_jobref"
-                        aria-describedby="jobref-del">
+                    <div class="filter-group" aria-labelledby="del-jobref">
+                        <label for="del-jobref">Job Reference</label>
+                        <select id="del-jobref" name="del-jobref">
                             <option value="" disabled selected hidden>-- Please Select --</option>
                             <option value="dlr01">DLR01</option>
                             <option value="lms02">LMS02</option>
@@ -276,8 +274,8 @@ mysqli_close($conn);
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label class="label-spacer">x</label>
-                        <button type="submit" class="btn btn-danger">Delete All</button>
+                        <label for="del-btn" class="label-spacer">x</label>
+                        <button type="submit" class="btn btn-danger" id="del-btn">Delete All</button>
                     </div>
                 </div>
             </form>
@@ -290,33 +288,34 @@ mysqli_close($conn);
                 Change EOI Status
             </div>
             <form method="POST" action="manage.php" novalidate>
-                <input type="hidden" name="action" value="change_status">
+                <input type="hidden" id="hidden" name="action" value="change-status">
                 <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="eoi_number">EOI Number</label>
-                        <input type="number" id="eoi_number" name="eoi_number" placeholder="e.g. 12" min="1">
+                    <div class="filter-group" aria-labelledby="eoi-number">
+                        <label for="eoi-number">EOI Number</label>
+                        <input type="number" id="eoi-number" name="eoi-number" placeholder="e.g. 12" min="1">
                     </div>
-                    <div class="filter-group">
-                        <label for="new_status">New Status</label>
-                        <select id="new_status" name="new_status">
+                    <div class="filter-group" aria-labelledby="new-status">
+                        <label for="new-status">New Status</label>
+                        <select id="new-status" name="new-status">
                             <option value="New">New</option>
                             <option value="Current">Current</option>
                             <option value="Final">Final</option>
                         </select>
                     </div>
                     <div class="filter-group" style="flex:0 0 auto;">
-                        <label class="label-spacer">x</label>
-                        <button type="submit" class="btn btn-amber">Update</button>
+                        <label for="update-btn" class="label-spacer">x</label>
+                        <button type="submit" class="btn btn-amber" id="update-btn">Update</button>
                     </div>
                 </div>
             </form>
         </div>
 
-    </div><!-- /panels-grid -->
+    </div>
 
     <!-- ─── Results table ─── -->
     <div class="results-header">
         <span class="results-count">
+            <h2>EOI Table: </h2>
             Showing <strong><?= count($eois) ?></strong> record<?= count($eois) !== 1 ? 's' : '' ?>
             <?php if ($filter_jobref || $filter_firstname || $filter_lastname): ?>
                 (filtered)
@@ -326,6 +325,7 @@ mysqli_close($conn);
 
     <div class="table-wrapper">
         <table class="eoi-table">
+            <caption></caption>
             <thead>
                 <tr>
                     <th>EOI #</th>
