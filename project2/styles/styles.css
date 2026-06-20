@@ -1571,6 +1571,13 @@ Start of manage page styling
     color: #b91c1c;
 }
 
+.alert-info {
+    background: var(--blue-lt);
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--blue);
+    color: #1e40af;
+}
+
 /* Action panels: grid + card */
 .panels-grid {
     display: grid;

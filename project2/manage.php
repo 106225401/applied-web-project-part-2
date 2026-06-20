@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = trim($_POST['action'] ?? '');
 
     // Delete all EOIs by job reference
-    if ($action == 'delete_by_jobref') {
-        $jobref = trim(stripslashes(htmlspecialchars($_POST['del_jobref'] ?? '')));
+    if ($action == 'delete-by-jobref') {
+        $jobref = trim($_POST['del-jobref'] ?? '');
         if (empty($jobref)) {
             $action_message = "Please enter a job reference to delete.";
             $action_type    = "error";
@@ -38,37 +38,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Change EOI status
-    elseif ($action == 'change_status') {
-        $eoi_number = intval($_POST['eoi_number'] ?? 0);
-        $new_status = trim($_POST['new_status'] ?? '');
+    elseif ($action == 'change-status') {
+        $eoi_number = intval($_POST['eoi-number'] ?? 0);
+        $new_status = trim($_POST['new-status'] ?? '');
         $allowed_statuses = ['New', 'Current', 'Final'];
 
         if ($eoi_number <= 0 || !in_array($new_status, $allowed_statuses)) {
             $action_message = "Invalid EOI number or status.";
             $action_type    = "error";
         } else {
-            $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE EOInumber = ?");
-            $stmt->bind_param("si", $new_status, $eoi_number);
-            $stmt->execute();
-            $rows = mysqli_stmt_affected_rows($stmt);
-            $stmt->close();
-            if ($rows > 0) {
+            // fetch the current status record
+            $check = $conn->prepare("SELECT status FROM eoi WHERE EOInumber = ?");
+            $check->bind_param("i", $eoi_number);
+            $check->execute();
+            $row = $check->get_result()->fetch_assoc();
+            $check->close();
+            if (!$row) {
+                $action_message = "EOI $eoi_number not found.";
+                $action_type = "error";
+            } elseif ($row['status'] == $new_status) {
+                $action_message = "EOI $eoi_number is already set to '$new_status'.";    
+                $action_type = "info";
+            } else {
+                $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE EOInumber = ?");
+                $stmt->bind_param("si", $new_status, $eoi_number);
+                $stmt->execute();
+                $stmt->close();
                 $action_message = "EOI $eoi_number status updated to '$new_status'.";
                 $action_type    = "success";
-            } else {
-                $action_message = "EOI $eoi_number not found.";
-                $action_type    = "error";
             }
         }
     }
 }
 
 // Filtering
-$filter_jobref    = trim(stripslashes($_GET['filter_jobref']    ?? ''));
-$filter_firstname = trim(stripslashes($_GET['filter_firstname'] ?? ''));
-$filter_lastname  = trim(stripslashes($_GET['filter_lastname']  ?? ''));
-$sort_field       = $_GET['sort_field'] ?? 'EOInumber';
-$sort_dir         = ($_GET['sort_dir'] ?? 'ASC') == 'DESC' ? 'DESC' : 'ASC';
+$filter_jobref    = trim(stripslashes($_GET['filter-jobref']    ?? ''));
+$filter_firstname = trim(stripslashes($_GET['filter-firstname'] ?? ''));
+$filter_lastname  = trim(stripslashes($_GET['filter-lastname']  ?? ''));
+$sort_field       = $_GET['sort-field'] ?? 'EOInumber';
+$sort_dir         = ($_GET['sort-dir'] ?? 'ASC') == 'DESC' ? 'DESC' : 'ASC';
 
 // Whitelist sortable columns to prevent SQL injection
 $allowed_sort = [
@@ -171,7 +179,7 @@ mysqli_close($conn);
 
     <!-- Alert message from POST actions -->
     <?php if (!empty($action_message)): ?>
-    <div class="alert alert-<?= $action_type == 'success' ? 'success' : 'error' ?>">
+    <div class="alert alert-<?= htmlspecialchars($action_type) ?>">
         <?= htmlspecialchars($action_message) ?>
     </div>
     <?php endif; ?>
@@ -349,7 +357,7 @@ mysqli_close($conn);
             <tbody>
             <?php if (empty($eois)): ?>
                 <tr>
-                    <td colspan="12">
+                    <td colspan="16">
                         <div class="empty-state">
                             <p>📭</p>
                             <p>No EOI records found<?= ($filter_jobref || $filter_firstname || $filter_lastname) ? ' matching your filters' : '' ?>.</p>
@@ -386,9 +394,9 @@ mysqli_close($conn);
                     <td>
                         <!-- Inline quick-change status form per row -->
                         <form method="POST" action="manage.php" class="status-form" novalidate>
-                            <input type="hidden" name="action"     value="change_status">
-                            <input type="hidden" name="eoi_number" value="<?= intval($eoi['EOInumber']) ?>">
-                            <select name="new_status">
+                            <input type="hidden" name="action"     value="change-status">
+                            <input type="hidden" name="eoi-number" value="<?= intval($eoi['EOInumber']) ?>">
+                            <select name="new-status">
                                 <option value="New"     <?= $status == 'New'     ? 'selected' : '' ?>>New</option>
                                 <option value="Current" <?= $status == 'Current' ? 'selected' : '' ?>>Current</option>
                                 <option value="Final"   <?= $status == 'Final'   ? 'selected' : '' ?>>Final</option>
