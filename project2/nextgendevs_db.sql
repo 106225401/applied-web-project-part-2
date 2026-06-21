@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2026 at 09:38 AM
+-- Generation Time: Jun 21, 2026 at 12:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -103,7 +103,7 @@ CREATE TABLE `eoi` (
 --
 
 INSERT INTO `eoi` (`EOInumber`, `jobref`, `fname`, `lname`, `dob`, `gender`, `street`, `suburb`, `state`, `postcode`, `email`, `phone`, `skill`, `others`, `status`) VALUES
-(1, 'dlr01', 'Jing Yee', 'Ng', '01/05/2006', 'female', 'NO.30 Jalan PU 12/5', 'Puchong', 'VIC', '1234', '106225401@student.swin.edu.au', '01118582008', 'excel, mysql, python', 'HTML, CSS, PHP, Ruby', 'New');
+(1, 'dlr01', 'Jing Yee', 'Ng', '01/05/2006', 'female', 'NO.30 Jalan PU 12/5', 'Puchong', 'VIC', '1234', '106225401@student.swin.edu.au', '01118582008', 'excel, mysql, python', 'HTML, CSS, PHP, Ruby, C++', 'New');
 
 -- --------------------------------------------------------
 
